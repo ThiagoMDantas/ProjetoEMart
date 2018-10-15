@@ -77,7 +77,10 @@
                 <h3 class="mb-5">
                     <em><font style="vertical-align: inherit;" color="ffffff"><font style="vertical-align: inherit;">Praticidade que nós gostariamos de ter nos nossos dias!</font></font></em>
                 </h3>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entrar</font></font></a>
+                <form name="inicial" action="LoginControle" method="POST" id="formInicial">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#"><font style="vertical-align: inherit;" onClick="document.getElementById('formInicial').submit();"><font style="vertical-align: inherit;">Entrar</font></font></a>
+                <input type="hidden" name="flag" value="Formlogin">
+                </form>
             </div>
             <div class="overlay"></div>
         </header>

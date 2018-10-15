@@ -19,7 +19,7 @@ public class ConectaBanco {
         Connection conexao = null;
         try {
             Class.forName("org.postgresql.Driver");
-            conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sistema", "postgres", "postgres");
+            conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/EMart", "postgres", "postgres");
         
         } catch (SQLException erro2) {
             throw new RuntimeException(erro2);
