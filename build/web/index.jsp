@@ -61,8 +61,8 @@
                 </ul>
                 <span class="navbar-text">
                     <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                        <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cadastrar</button></a>
+                        <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>
                     </form>
                 </span>
             </div>
@@ -78,8 +78,8 @@
                     <em><font style="vertical-align: inherit;" color="ffffff"><font style="vertical-align: inherit;">Praticidade que nós gostariamos de ter nos nossos dias!</font></font></em>
                 </h3>
                 <form name="inicial" action="LoginControle" method="POST" id="formInicial">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#"><font style="vertical-align: inherit;" onClick="document.getElementById('formInicial').submit();"><font style="vertical-align: inherit;">Entrar</font></font></a>
-                <input type="hidden" name="flag" value="Formlogin">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" onClick="document.getElementById('formInicial').submit();"><font style="vertical-align: inherit;" ><font style="vertical-align: inherit;">Entrar</font></font></a>
+                <input type="hidden" name="flag" value="Formlogin" onClick="document.getElementById('formInicial').submit();">
                 </form>
             </div>
             <div class="overlay"></div>

@@ -20,10 +20,10 @@ import util.ConectaBanco;
  */
 public class LoginDao implements ILoginDao {
     
-    private static final String INSERT = "INSERT INTO Login (usuario, senha) VALUES ( ?, ?);";
-    private static final String DELETE = "DELETE FROM Login WHERE usuario=? and senha=?;";
-    private static final String BUSCAR = "SELECT * FROM Login WHERE usuario=? and senha=?;";
-    private static final String UPDATE = "UPDATE Login SET usuario=?, senha=? WHERE usuario=? and senha=?;";
+    private static final String INSERT = "INSERT INTO login (usuario, senha) VALUES ( ?, ?);";
+    private static final String DELETE = "DELETE FROM login WHERE usuario=? and senha=?;";
+    private static final String BUSCAR = "SELECT * FROM login WHERE usuario=? and senha=?;";
+    private static final String UPDATE = "UPDATE login SET usuario=?, senha=? WHERE usuario=? and senha=?;";
 
      private Connection conexao;
      
@@ -43,9 +43,8 @@ public class LoginDao implements ILoginDao {
 
             return true;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
 
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
 
         } finally {
@@ -68,18 +67,20 @@ public class LoginDao implements ILoginDao {
           
           PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
           
+          pstmt.setString(1, login.getUsuario());
+          pstmt.setString(2, login.getSenha());
+          
           ResultSet rs = pstmt.executeQuery();
           
           rs.next();
           
-          login.setUsuario(rs.getString("usuario"));
-          login.setSenha(rs.getString("senha"));
+          
           
           
           return true;
           
           
-      } catch (ClassNotFoundException | SQLException ex) {  
+      } catch (Exception ex) {  
             
           Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
           return false;
@@ -110,7 +111,7 @@ public class LoginDao implements ILoginDao {
           return true;
           
           
-      } catch (ClassNotFoundException | SQLException ex) {  
+      } catch (Exception ex) {  
             
           Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
           return false;
@@ -143,7 +144,7 @@ public class LoginDao implements ILoginDao {
 
             return true;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
 
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;

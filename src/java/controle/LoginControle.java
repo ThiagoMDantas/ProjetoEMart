@@ -5,6 +5,8 @@
  */
 package controle;
 
+import DAOs.LoginDao;
+import beans.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -44,19 +46,50 @@ public class LoginControle extends HttpServlet {
                switch(flag){
                
                    case "Formlogin":
-                       request.getRequestDispatcher("view/Login.jsp").forward(request, response);
+                       request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
                     break;
                     
                     case "realizarLogin":
-                       //
+                        
+                       Login login = new Login();
+                       //nome dos campos da jsp
+                       login.setUsuario(request.getParameter("txtusuario"));
+                       login.setSenha(request.getParameter("txtsenha"));
+                       
+                        LoginDao logindao = new LoginDao();
+                        boolean resultado;
+                        resultado = logindao.realizarLogin(login);
+                       
+                        if(resultado != true){
+                            
+                            
+                            request.getRequestDispatcher("/jsp/LoginFalha.jsp").forward(request, response);
+                           
+                        
+                            
+                        }else{
+                        
+                            request.getRequestDispatcher("/jsp/LoginSucesso.jsp").forward(request, response);
+                            
+                        }
+                        
+                        
                     break;
                        
                    case "Formcadastrar":
-                       request.getRequestDispatcher("view/Cadastrar.jsp").forward(request, response);
+                       request.getRequestDispatcher("/jsp/Cadastrar.jsp").forward(request, response);
                     break;
                     
                     case "realizarCadastro":
-                       //
+                       
+                        Login log = new Login();
+                        log.setUsuario(request.getParameter("txtcadusuario"));
+                        log.setSenha(request.getParameter("txtcadsenha"));
+                        
+                        LoginDao logdao = new LoginDao();
+                        logdao.cadatrarLogin(log);
+                        
+                        
                     break;
                     
                }

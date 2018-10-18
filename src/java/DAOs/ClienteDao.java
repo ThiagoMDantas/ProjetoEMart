@@ -50,7 +50,7 @@ public class ClienteDao implements IClienteDao{
 
             return true;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
 
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -94,7 +94,7 @@ public class ClienteDao implements IClienteDao{
             
             return true;
             
-        }catch(ClassNotFoundException | SQLException ex){
+        }catch(Exception ex){
         
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -133,7 +133,7 @@ public class ClienteDao implements IClienteDao{
             pstmt.execute();
             return true;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
 
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -164,7 +164,7 @@ public class ClienteDao implements IClienteDao{
 
             return true;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
 
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
