@@ -43,7 +43,7 @@
                 box-sizing: border-box;
             }
 
-            button {
+            .button1 {
                 background-color: #4CAF50;
                 color: white;
                 padding: 14px 20px;
@@ -53,7 +53,7 @@
                 width: 100%;
             }
 
-            button:hover {
+            .button1:hover {
                 opacity: 0.8;
             }
 
@@ -146,8 +146,8 @@
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="txtsenha" required>
 
-                        <button type="submit">Login</button>
-                        <button type="button" class="cancelbtn">Cancel</button>
+                        <button type="submit" class="button1">Login</button>
+                        <button type="button1" class="cancelbtn">Cancel</button>
 
                         <input type="hidden" name="flag" value="realizarLogin">
 
