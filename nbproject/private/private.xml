@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/ClienteDao.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/LoginDao.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/util/ConectaBanco.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/LoginControle.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/beans/Pessoa.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/CadastroControle.java</file>
         </group>
     </open-files>
