@@ -30,7 +30,7 @@
         <link href="css/meucss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
+            .body {font-family: Arial, Helvetica, sans-serif;}
             form {border: 3px solid #f1f1f1;
                   background: #f1f1f1}
 
@@ -147,7 +147,6 @@
                         <input type="password" placeholder="Enter Password" name="txtsenha" required>
 
                         <button type="submit" class="button1">Login</button>
-                        <button type="button1" class="cancelbtn">Cancel</button>
 
                         <input type="hidden" name="flag" value="realizarLogin">
 
