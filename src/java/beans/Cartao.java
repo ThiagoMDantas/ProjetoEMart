@@ -16,6 +16,15 @@ public class Cartao {
     private int numero;
     private String portador;
     private Date validade;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getNumero() {
         return numero;
@@ -46,12 +55,13 @@ public class Cartao {
     public Cartao() {
     }
 
-    public Cartao(int numero, String portador, Date validade) {
+    public Cartao(int numero, String portador, Date validade, int id) {
         this.numero = numero;
         this.portador = portador;
         this.validade = validade;
+        this.id = id;
     }
-    
+
     
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAOs;
+package Interfaces;
 
 import beans.Cliente;
 
@@ -13,9 +13,9 @@ import beans.Cliente;
  */
 public interface IClienteDao {
     
-    public boolean cadatrarCliente(Cliente cliente);
+    public void cadatrarCliente(Cliente cliente);
     
-    public boolean consultarCliente(Cliente cliente);
+    public Cliente consultarCliente(Cliente cliente);
     
     public boolean alterarCliente(Cliente cliente);
     

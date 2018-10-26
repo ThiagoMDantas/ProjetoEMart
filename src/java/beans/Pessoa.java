@@ -14,13 +14,22 @@ import java.util.Date;
 public class Pessoa {
     
     private String nome;
-    private Date dtNascimento;
+    private String dtNascimento;
     private String email;
     private String cpf;
     private String sexo;
     private int telefone;
     private Endereco endereco;
     private Login login;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -30,11 +39,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Date getDtNascimento() {
+    public String getDtNascimento() {
         return dtNascimento;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
+    public void setDtNascimento(String dtNascimento) {
         this.dtNascimento = dtNascimento;
     }
 
@@ -86,15 +95,16 @@ public class Pessoa {
         this.login = login;
     }
 
-    
-
-    public Pessoa(String nome, Date dtNascimento, String email, String cpf, String sexo, int telefone) {
+    public Pessoa(String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
         this.nome = nome;
         this.dtNascimento = dtNascimento;
         this.email = email;
         this.cpf = cpf;
         this.sexo = sexo;
         this.telefone = telefone;
+        this.endereco = endereco;
+        this.login = login;
+        this.id = id;
     }
 
     public Pessoa() {

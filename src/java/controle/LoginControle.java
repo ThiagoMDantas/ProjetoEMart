@@ -57,40 +57,20 @@ public class LoginControle extends HttpServlet {
                        login.setSenha(request.getParameter("txtsenha"));
                        
                         LoginDao logindao = new LoginDao();
-                        boolean resultado;
-                        resultado = logindao.realizarLogin(login);
+                        
                        
-                        if(resultado != true){
-                            
-                            
+                        if(!logindao.realizarLogin(login)){
                             request.getRequestDispatcher("/jsp/LoginFalha.jsp").forward(request, response);
-                           
-                        
-                            
                         }else{
-                        
                             request.getRequestDispatcher("/jsp/LoginSucesso.jsp").forward(request, response);
-                            
                         }
-                        
-                        
                     break;
                        
                    case "Formcadastrar":
                        request.getRequestDispatcher("/jsp/Cadastrar.jsp").forward(request, response);
                     break;
                     
-                    case "realizarCadastro":
-                       
-                        Login log = new Login();
-                        log.setUsuario(request.getParameter("txtcadusuario"));
-                        log.setSenha(request.getParameter("txtcadsenha"));
-                        
-                        LoginDao logdao = new LoginDao();
-                        logdao.cadatrarLogin(log);
-                        
-                        
-                    break;
+                    
                     
                }
            

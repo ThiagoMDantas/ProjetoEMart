@@ -23,11 +23,11 @@ public class Entregador extends Pessoa{
         this.veiculo = veiculo;
     }
 
-    public Entregador(String veiculo, String nome, Date dtNascimento, String email, String cpf, String sexo, int telefone) {
-        super(nome, dtNascimento, email, cpf, sexo, telefone);
+    public Entregador(String veiculo, String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
+        super(nome, dtNascimento, email, cpf, sexo, telefone, endereco, login, id);
         this.veiculo = veiculo;
     }
-
+  
     public Entregador() {
     }
     

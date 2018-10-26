@@ -5,6 +5,7 @@
  */
 package DAOs;
 
+import Interfaces.ILoginDao;
 import beans.Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +29,7 @@ public class LoginDao implements ILoginDao {
      private Connection conexao;
      
     @Override
-    public boolean cadatrarLogin(Login login) {
+    public void cadatrarLogin(Login login) {
 
          try {
 
@@ -41,11 +42,9 @@ public class LoginDao implements ILoginDao {
 
             pstmt.execute();
 
-            return true;
 
         } catch (Exception ex) {
 
-            return false;
 
         } finally {
 

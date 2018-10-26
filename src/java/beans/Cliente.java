@@ -22,11 +22,13 @@ public class Cliente extends Pessoa{
     public void setCart(Cartao cart) {
         this.cart = cart;
     }
-    
-    public Cliente(Cartao cart, String nome, Date dtNascimento, String email, String cpf, String sexo, int telefone) {
-        super(nome, dtNascimento, email, cpf, sexo, telefone);
+
+    public Cliente(Cartao cart, String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
+        super(nome, dtNascimento, email, cpf, sexo, telefone, endereco, login, id);
         this.cart = cart;
     }
+    
+    
 
     public Cliente() {
     }

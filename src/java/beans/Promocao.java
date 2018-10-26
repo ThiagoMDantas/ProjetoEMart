@@ -11,9 +11,19 @@ package beans;
  */
 public class Promocao {
     
+    
     private String nomePromo;
     private double percentPromo;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNomePromo() {
         return nomePromo;
     }
@@ -29,12 +39,13 @@ public class Promocao {
     public void setPercentPromo(double percentPromo) {
         this.percentPromo = percentPromo;
     }
-    
-    public Promocao(String nomePromo, double percentPromo) {
+
+    public Promocao(String nomePromo, double percentPromo, int id) {
         this.nomePromo = nomePromo;
         this.percentPromo = percentPromo;
+        this.id = id;
     }
-
+    
     public Promocao() {
     }
     

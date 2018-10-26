@@ -5,6 +5,7 @@
  */
 package DAOs;
 
+import Interfaces.IClienteDao;
 import beans.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,17 +21,16 @@ import util.ConectaBanco;
  */
 public class ClienteDao implements IClienteDao{
 
-    private static final String SELECT_ALL = "SELECT * FROM Cliente where nome_cli ilike ?;";
-    private static final String INSERT = "INSERT INTO Cliente (nome_cli, cpf_cli, sexo_cli, telefone_cli, dt_nasci_cli, email_cli) VALUES ( ?, ?, ?, ?, ?, ?);";
-    private static final String DELETE = "DELETE FROM Cliente where cpf_cli=?";
-    private static final String BUSCAR = "SELECT * FROM Cliente WHERE cpf_cli=?;";
-    private static final String UPDATE = "UPDATE Cliente SET nome_cli=?, cpf_cli=?, sexo_cli=?, telefone_cli=?, dt_nasci_cli=?, email_cli=? WHERE cpf_cli=?;";
+    private static final String INSERT = "INSERT INTO cliente (nome_cli, cpf_cli, sexo_cli, telefone_cli, dt_nasci_cli, email_cli) VALUES ( ?, ?, ?, ?, ?, ?);";
+    private static final String DELETE = "DELETE FROM cliente where cpf_cli=?";
+    private static final String BUSCAR = "SELECT * FROM cliente WHERE cpf_cli=?;";
+    private static final String UPDATE = "UPDATE cliente SET nome_cli=?, cpf_cli=?, sexo_cli=?, telefone_cli=?, dt_nasci_cli=?, email_cli=? WHERE cpf_cli=?;";
 
     
     private Connection conexao;
     
     @Override
-    public boolean cadatrarCliente(Cliente cliente) {
+    public void cadatrarCliente(Cliente cliente) {
     
         try {
 
@@ -42,18 +42,16 @@ public class ClienteDao implements IClienteDao{
             pstmt.setString(2, cliente.getCpf());
             pstmt.setString(3, cliente.getSexo());
             pstmt.setInt(4, cliente.getTelefone());
-            pstmt.setString(5, cliente.getDtNascimento().toString());
+            pstmt.setString(5, cliente.getDtNascimento());
             pstmt.setString(6, cliente.getEmail());
             
 
             pstmt.execute();
 
-            return true;
 
         } catch (Exception ex) {
 
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
 
         } finally {
 
@@ -70,7 +68,7 @@ public class ClienteDao implements IClienteDao{
     }
 
     @Override
-    public boolean consultarCliente(Cliente cliente) {
+    public Cliente consultarCliente(Cliente cliente) {
     
         try{
             
@@ -89,15 +87,15 @@ public class ClienteDao implements IClienteDao{
             cliente.setCpf(rs.getString("cpf_cli"));
             cliente.setSexo(rs.getString("sexo_cli"));
             cliente.setEmail(rs.getString("email_cli"));
-            cliente.setDtNascimento(rs.getDate("dt_nasci_cli"));
+            cliente.setDtNascimento(rs.getString("dt_nasci_cli"));
             cliente.setTelefone(rs.getInt("telefone_cli"));
             
-            return true;
+            
             
         }catch(Exception ex){
         
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            
         
         
         }finally{
@@ -110,6 +108,7 @@ public class ClienteDao implements IClienteDao{
             
         
         }
+        return cliente;
     
     }
 
@@ -126,7 +125,7 @@ public class ClienteDao implements IClienteDao{
             pstmt.setString(2, cliente.getCpf());
             pstmt.setString(3, cliente.getSexo());
             pstmt.setInt(4, cliente.getTelefone());
-            pstmt.setString(5, cliente.getDtNascimento().toString());
+            pstmt.setString(5, cliente.getDtNascimento());
             pstmt.setString(6, cliente.getEmail());
             pstmt.setString(7, cliente.getCpf());
             

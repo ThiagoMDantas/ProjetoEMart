@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAOs;
+package Interfaces;
 
 import beans.Login;
 
@@ -13,7 +13,7 @@ import beans.Login;
  */
 public interface ILoginDao {
     
-    public boolean cadatrarLogin(Login login);
+    public void cadatrarLogin(Login login);
     
     public boolean realizarLogin(Login login);
     

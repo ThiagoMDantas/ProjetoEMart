@@ -14,6 +14,7 @@ import java.util.Date;
 public class Funcionario extends Pessoa{
 
     private int numFuncionario;
+   
 
     public int getnumFuncionario() {
         return numFuncionario;
@@ -23,8 +24,8 @@ public class Funcionario extends Pessoa{
         this.numFuncionario = numFuncionario;
     }
 
-    public Funcionario(int numFuncionario, String nome, Date dtNascimento, String email, String cpf, String sexo, int telefone) {
-        super(nome, dtNascimento, email, cpf, sexo, telefone);
+    public Funcionario(int numFuncionario, String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
+        super(nome, dtNascimento, email, cpf, sexo, telefone, endereco, login, id);
         this.numFuncionario = numFuncionario;
     }
     

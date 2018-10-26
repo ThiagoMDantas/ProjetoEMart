@@ -10,9 +10,17 @@ package beans;
  * @author Thiago
  */
 public class Tipo {
-    
+    private int id;
     private String tipo;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getTipo() {
         return tipo;
     }
@@ -23,11 +31,12 @@ public class Tipo {
     
     public Tipo() {
     }
-
-    public Tipo(String tipo) {
+    
+     public Tipo(int id, String tipo) {
+        this.id = id;
         this.tipo = tipo;
     }
-    
+
     
     
     

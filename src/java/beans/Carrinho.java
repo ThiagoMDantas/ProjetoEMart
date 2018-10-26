@@ -15,6 +15,15 @@ import java.util.ArrayList;
 public class Carrinho {
 
     private ArrayList<ItemCarrinho> itens;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ArrayList<ItemCarrinho> getItens() {
         return itens;
@@ -27,9 +36,12 @@ public class Carrinho {
     public Carrinho() {
     }
 
-    public Carrinho(ArrayList<ItemCarrinho> itens) {
+    public Carrinho(ArrayList<ItemCarrinho> itens, int id) {
         this.itens = itens;
+        this.id = id;
     }
+
+    
     
     
 

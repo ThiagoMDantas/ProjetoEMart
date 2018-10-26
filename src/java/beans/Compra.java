@@ -17,6 +17,15 @@ public class Compra {
     private Cliente cliente;
     private Date dtCompra;
     private Entregador entregador;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Carrinho getCarrinho() {
         return carrinho;
@@ -50,11 +59,12 @@ public class Compra {
         this.entregador = entregador;
     }
 
-    public Compra(Carrinho carrinho, Cliente cliente, Date dtCompra, Entregador entregador) {
+    public Compra(Carrinho carrinho, Cliente cliente, Date dtCompra, Entregador entregador, int id) {
         this.carrinho = carrinho;
         this.cliente = cliente;
         this.dtCompra = dtCompra;
         this.entregador = entregador;
+        this.id = id;
     }
 
     public Compra() {

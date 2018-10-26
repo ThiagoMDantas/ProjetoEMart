@@ -17,6 +17,15 @@ public class Produto {
     private Tipo tipo;
     private Promocao promo;
     private Cooperador fornecedor;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -66,13 +75,14 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor) {
+    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, int id) {
         this.nome = nome;
         this.valor = valor;
         this.detalhes = detalhes;
         this.tipo = tipo;
         this.promo = promo;
         this.fornecedor = fornecedor;
+        this.id = id;
     }
 
     public Produto() {

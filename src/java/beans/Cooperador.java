@@ -17,6 +17,15 @@ public class Cooperador {
     private int telefoneEmpresa;
     private Endereco enderecoEmpresa;
     private Login login;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNomeEmpresa() {
         return nomeEmpresa;
@@ -66,15 +75,16 @@ public class Cooperador {
         this.login = login;
     }
 
-    public Cooperador(String nomeEmpresa, String cnpj, String emailEmpresa, int telefoneEmpresa, Endereco enderecoEmpresa, Login login) {
+    public Cooperador(String nomeEmpresa, String cnpj, String emailEmpresa, int telefoneEmpresa, Endereco enderecoEmpresa, Login login, int id) {
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
         this.emailEmpresa = emailEmpresa;
         this.telefoneEmpresa = telefoneEmpresa;
         this.enderecoEmpresa = enderecoEmpresa;
         this.login = login;
+        this.id = id;
     }
-
+    
     public Cooperador() {
     }
     
