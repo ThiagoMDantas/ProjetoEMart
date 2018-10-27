@@ -74,7 +74,7 @@ public class CadastroControle extends HttpServlet {
                         end.setBairro(request.getParameter("txtbairro"));
                         end.setCidade(request.getParameter("txtcidade"));
                         end.setEstado(request.getParameter("txtestado"));
-                        end.setCep(request.getParameter("txtcep"));
+                        end.setCep(Integer.parseInt(request.getParameter("txtcep")));
                         cli.setEndereco(end);
                         
                         
@@ -91,17 +91,20 @@ public class CadastroControle extends HttpServlet {
                         
                         EnderecoDao enddao = new EnderecoDao();
                         enddao.cadastrarEndereco(end);
-
+                        
+                        request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
+                        
                         break;
+                        
 
                 }
             }
 
-        }//catch(ParseException e){
+        }catch(Error e){
         
-            //Logger.getLogger(CadastroControle.class.getName()).log(Level.SEVERE, null,e);
+            Logger.getLogger(CadastroControle.class.getName()).log(Level.SEVERE, null,e);
             
-        //}
+        }
 
     }
 

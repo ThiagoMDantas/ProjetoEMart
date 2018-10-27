@@ -43,7 +43,7 @@ public class LoginDao implements ILoginDao {
             pstmt.execute();
 
 
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
 
 
         } finally {
@@ -73,9 +73,7 @@ public class LoginDao implements ILoginDao {
           
           rs.next();
           
-          
-          
-          
+         
           return true;
           
           

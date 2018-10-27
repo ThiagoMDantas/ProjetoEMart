@@ -17,14 +17,14 @@ public class Endereco {
     private String complemento;
     private String cidade;
     private String estado;
-    private String cep;
+    private int cep;
     private int id;
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
     }
 
