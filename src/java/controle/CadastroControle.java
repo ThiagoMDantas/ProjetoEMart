@@ -55,12 +55,12 @@ public class CadastroControle extends HttpServlet {
                 switch (flag) {
                     case "realizarCadastro":
                         
-                        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                        
                         
                         Cliente cli = new Cliente();
                         cli.setNome(request.getParameter("txtnome"));
                         cli.setSexo(request.getParameter("txtsexo"));
-                        cli.setCpf(request.getParameter("txtcpf"));
+                        cli.setCpf(Integer.parseInt(request.getParameter("txtcpf")));
                         cli.setDtNascimento(request.getParameter("txtdatanasc"));
                         cli.setTelefone(Integer.parseInt(request.getParameter("txttelefone")));
                         cli.setEmail(request.getParameter("txtemail"));
@@ -75,22 +75,24 @@ public class CadastroControle extends HttpServlet {
                         end.setCidade(request.getParameter("txtcidade"));
                         end.setEstado(request.getParameter("txtestado"));
                         end.setCep(Integer.parseInt(request.getParameter("txtcep")));
-                        cli.setEndereco(end);
+                       
                         
                         
                         Login log = new Login();
                         log.setUsuario(request.getParameter("txtcadusuario"));
                         log.setSenha(request.getParameter("txtcadsenha"));
-                        cli.setLogin(log);
                         
-                        ClienteDao clidao= new ClienteDao();
-                        clidao.cadatrarCliente(cli);
                         
                         LoginDao logdao = new LoginDao();
                         logdao.cadatrarLogin(log);
+                        cli.setLogin(logdao.consultarLogin(log));
                         
                         EnderecoDao enddao = new EnderecoDao();
                         enddao.cadastrarEndereco(end);
+                        cli.setEndereco(enddao.consultarEnderecoPCad(end));
+                        
+                        ClienteDao clidao= new ClienteDao();
+                        clidao.cadatrarCliente(cli);
                         
                         request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
                         

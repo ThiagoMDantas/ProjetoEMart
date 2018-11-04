@@ -23,7 +23,7 @@ public class Cliente extends Pessoa{
         this.cart = cart;
     }
 
-    public Cliente(Cartao cart, String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
+    public Cliente(Cartao cart, String nome, String dtNascimento, String email, int cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
         super(nome, dtNascimento, email, cpf, sexo, telefone, endereco, login, id);
         this.cart = cart;
     }

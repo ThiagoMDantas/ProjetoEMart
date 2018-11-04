@@ -17,6 +17,8 @@ public interface ILoginDao {
     
     public boolean realizarLogin(Login login);
     
+    public Login consultarLogin(Login login);
+    
     public boolean alterarSenha(Login login);
     
     public boolean excluirLogin(Login login);

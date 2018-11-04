@@ -21,10 +21,10 @@ import util.ConectaBanco;
  */
 public class ClienteDao implements IClienteDao{
 
-    private static final String INSERT = "INSERT INTO cliente (nome_cli, cpf_cli, sexo_cli, telefone_cli, dt_nasci_cli, email_cli) VALUES ( ?, ?, ?, ?, ?, ?);";
-    private static final String DELETE = "DELETE FROM cliente where cpf_cli=?";
-    private static final String BUSCAR = "SELECT * FROM cliente WHERE cpf_cli=?;";
-    private static final String UPDATE = "UPDATE cliente SET nome_cli=?, cpf_cli=?, sexo_cli=?, telefone_cli=?, dt_nasci_cli=?, email_cli=? WHERE cpf_cli=?;";
+    private static final String INSERT = "INSERT INTO cliente (nome_cli, cpf_cli, sexo_cli, telefone_cli, dt_nasci_cli, email_cli, endereco_cli, login_cli) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+    private static final String DELETE = "DELETE FROM cliente where id_cli=?";
+    private static final String BUSCAR = "SELECT * FROM cliente WHERE id_cli=?;";
+    private static final String UPDATE = "UPDATE cliente SET nome_cli=?, cpf_cli=?, sexo_cli=?, telefone_cli=?, dt_nasci_cli=?, email_cli=? WHERE id_cli=?;";
 
     
     private Connection conexao;
@@ -39,11 +39,13 @@ public class ClienteDao implements IClienteDao{
             PreparedStatement pstmt = conexao.prepareStatement(INSERT);
 
             pstmt.setString(1, cliente.getNome());
-            pstmt.setString(2, cliente.getCpf());
+            pstmt.setInt(2, cliente.getCpf());
             pstmt.setString(3, cliente.getSexo());
             pstmt.setInt(4, cliente.getTelefone());
             pstmt.setString(5, cliente.getDtNascimento());
             pstmt.setString(6, cliente.getEmail());
+            pstmt.setInt(7, cliente.getEndereco().getId());
+            pstmt.setInt(8, cliente.getLogin().getId());
             
 
             pstmt.execute();
@@ -76,19 +78,21 @@ public class ClienteDao implements IClienteDao{
             
             PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
             
-            pstmt.setString(1, cliente.getCpf());
+            pstmt.setInt(1, cliente.getId());
             
             ResultSet rs = pstmt.executeQuery();
 
             // como a query ira retornar somente um registro, faremos o NEXT
             rs.next();
-
+            
+            cliente.setId(rs.getInt("id_cli"));
             cliente.setNome(rs.getString("nome_cli"));
-            cliente.setCpf(rs.getString("cpf_cli"));
+            cliente.setCpf(rs.getInt("cpf_cli"));
             cliente.setSexo(rs.getString("sexo_cli"));
             cliente.setEmail(rs.getString("email_cli"));
             cliente.setDtNascimento(rs.getString("dt_nasci_cli"));
             cliente.setTelefone(rs.getInt("telefone_cli"));
+            
             
             
             
@@ -122,12 +126,12 @@ public class ClienteDao implements IClienteDao{
             PreparedStatement pstmt = conexao.prepareStatement(UPDATE);
 
             pstmt.setString(1, cliente.getNome());
-            pstmt.setString(2, cliente.getCpf());
+            pstmt.setInt(2, cliente.getCpf());
             pstmt.setString(3, cliente.getSexo());
             pstmt.setInt(4, cliente.getTelefone());
             pstmt.setString(5, cliente.getDtNascimento());
             pstmt.setString(6, cliente.getEmail());
-            pstmt.setString(7, cliente.getCpf());
+            pstmt.setInt(7, cliente.getId());
             
             pstmt.execute();
             return true;
@@ -157,7 +161,7 @@ public class ClienteDao implements IClienteDao{
 
             PreparedStatement pstmt = conexao.prepareStatement(DELETE);
 
-            pstmt.setString(1, cliente.getCpf());
+            pstmt.setInt(1, cliente.getId());
 
             pstmt.execute();
 

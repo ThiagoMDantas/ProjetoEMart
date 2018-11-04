@@ -17,6 +17,8 @@ public interface IEnderecoDao {
     
     public Endereco consultarEndereco(Endereco endereco);
     
+    public Endereco consultarEnderecoPCad(Endereco endereco);
+    
     public boolean alterarEndereco(Endereco endereco);
     
     public boolean excluirEndereco(Endereco endereco);

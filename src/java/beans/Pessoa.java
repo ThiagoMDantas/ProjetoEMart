@@ -16,7 +16,7 @@ public class Pessoa {
     private String nome;
     private String dtNascimento;
     private String email;
-    private String cpf;
+    private int cpf;
     private String sexo;
     private int telefone;
     private Endereco endereco;
@@ -55,11 +55,11 @@ public class Pessoa {
         this.email = email;
     }
 
-    public String getCpf() {
+    public int getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(int cpf) {
         this.cpf = cpf;
     }
 
@@ -95,7 +95,7 @@ public class Pessoa {
         this.login = login;
     }
 
-    public Pessoa(String nome, String dtNascimento, String email, String cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
+    public Pessoa(String nome, String dtNascimento, String email, int cpf, String sexo, int telefone, Endereco endereco, Login login, int id) {
         this.nome = nome;
         this.dtNascimento = dtNascimento;
         this.email = email;

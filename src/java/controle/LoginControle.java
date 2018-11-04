@@ -58,11 +58,12 @@ public class LoginControle extends HttpServlet {
                        
                         LoginDao logindao = new LoginDao();
                         
-                       
+                        
                         if(!logindao.realizarLogin(login)){
-                            request.getRequestDispatcher("/jsp/LoginFalha.jsp").forward(request, response);
+                            request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
+                            out.print("alert(\"Hello! I am an alert box!!\");");
                         }else{
-                            request.getRequestDispatcher("/jsp/LoginSucesso.jsp").forward(request, response);
+                            request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
                         }
                     break;
                        
