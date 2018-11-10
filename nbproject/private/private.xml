@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/ClienteDao.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/Interfaces/ITipoDao.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/LoginDao.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/util/ConectaBanco.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/EnderecoDao.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Cadastrar.jsp</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/Interfaces/IEnderecoDao.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/CadastroControle.java</file>
         </group>
     </open-files>
 </project-private>

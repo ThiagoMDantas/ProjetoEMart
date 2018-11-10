@@ -13,8 +13,19 @@ public class Promocao {
     
     
     private String nomePromo;
-    private double percentPromo;
+    private int percentPromo;
     private int id;
+    private Produto produto;
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
     
     public int getId() {
         return id;
@@ -32,19 +43,24 @@ public class Promocao {
         this.nomePromo = nomePromo;
     }
 
-    public double getPercentPromo() {
+    public int getPercentPromo() {
         return percentPromo;
     }
 
-    public void setPercentPromo(double percentPromo) {
+    public void setPercentPromo(int percentPromo) {
         this.percentPromo = percentPromo;
     }
 
-    public Promocao(String nomePromo, double percentPromo, int id) {
+    
+
+    public Promocao(String nomePromo, int percentPromo, int id, Produto produto) {
         this.nomePromo = nomePromo;
         this.percentPromo = percentPromo;
         this.id = id;
+        this.produto = produto;
     }
+
+    
     
     public Promocao() {
     }

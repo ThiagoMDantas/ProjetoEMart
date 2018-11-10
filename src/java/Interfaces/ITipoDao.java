@@ -6,6 +6,7 @@
 package Interfaces;
 
 import beans.Tipo;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,8 @@ public interface ITipoDao {
     public void cadastrarTipo(Tipo tipo);
     
     public Tipo consultarTipo(Tipo tipo);
+    
+    public ArrayList<Tipo> consultarTodosTipo(Tipo tipo);
     
     public  boolean alterarTipo(Tipo tipo);
     

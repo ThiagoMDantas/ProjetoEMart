@@ -63,7 +63,7 @@ public class LoginControle extends HttpServlet {
                             request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
                             out.print("<div class=\"alert alert-danger\" role=\"alert\">...</div>");
                         }else{
-                            request.getRequestDispatcher("/jsp/Home.jsp").forward(request, response);
+                            request.getRequestDispatcher("ControleHome").forward(request, response);
                         }
                     break;
                        

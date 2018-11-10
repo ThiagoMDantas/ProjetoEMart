@@ -17,6 +17,37 @@ public class Cartao {
     private String portador;
     private Date validade;
     private int id;
+    private Cliente cliente;
+    private int codigo;
+
+    public Cartao(int numero, String portador, Date validade, int id, Cliente cliente, int codigo) {
+        this.numero = numero;
+        this.portador = portador;
+        this.validade = validade;
+        this.id = id;
+        this.cliente = cliente;
+        this.codigo = codigo;
+    }
+
+    
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     
     public int getId() {
         return id;
@@ -53,13 +84,6 @@ public class Cartao {
     
     
     public Cartao() {
-    }
-
-    public Cartao(int numero, String portador, Date validade, int id) {
-        this.numero = numero;
-        this.portador = portador;
-        this.validade = validade;
-        this.id = id;
     }
 
     

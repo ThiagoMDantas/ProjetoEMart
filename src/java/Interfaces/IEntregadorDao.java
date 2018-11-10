@@ -14,7 +14,7 @@ import beans.Entregador;
 public interface IEntregadorDao {
     
     
-    public void cadastrarFEntregador(Entregador entregador);
+    public void cadastrarEntregador(Entregador entregador);
     
     public Entregador consultarEntregador(Entregador entregador);
     

@@ -7,6 +7,8 @@ package DAOs;
 
 import Interfaces.IClienteDao;
 import beans.Cliente;
+import beans.Endereco;
+import beans.Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,6 +95,13 @@ public class ClienteDao implements IClienteDao{
             cliente.setDtNascimento(rs.getString("dt_nasci_cli"));
             cliente.setTelefone(rs.getInt("telefone_cli"));
             
+            Login log = new Login();
+            log.setId(rs.getInt("login_cli"));
+            cliente.setLogin(log);
+            
+            Endereco end = new Endereco();
+            end.setId(rs.getInt("endereco_cli"));
+            cliente.setEndereco(end);
             
             
             

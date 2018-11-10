@@ -120,7 +120,7 @@ public class EnderecoDao implements IEnderecoDao {
 
         } catch (Exception ex) {
 
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EnderecoDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
 
         } finally {
@@ -128,7 +128,7 @@ public class EnderecoDao implements IEnderecoDao {
             try {
                 conexao.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EnderecoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -151,7 +151,7 @@ public class EnderecoDao implements IEnderecoDao {
 
         } catch (Exception ex) {
 
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EnderecoDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
 
         } finally {
@@ -159,7 +159,7 @@ public class EnderecoDao implements IEnderecoDao {
             try {
                 conexao.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EnderecoDao.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

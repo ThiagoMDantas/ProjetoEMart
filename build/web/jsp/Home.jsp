@@ -4,6 +4,9 @@
     Author     : Thiago
 --%>
 
+<%@page import="beans.Tipo"%>
+<%@page import="beans.Produto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +35,17 @@
 
     </head>
     <body id="page-top">
+        
+        <%
+            ArrayList<Produto> arrprod = new ArrayList<Produto>();
+            arrprod = (ArrayList<Produto>) request.getAttribute("produtos");
+
+            ArrayList<Tipo> arrtipos = new ArrayList<Tipo>();
+            arrtipos = (ArrayList<Tipo>) request.getAttribute("tipos");
+
+
+
+        %>
 
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-dark bg-dark">
             <center>
@@ -48,7 +62,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre o EMart<span class="sr-only">(Página atual)</span>s</a>
+                        <a class="nav-link" href="#">Sobre o EMart<span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Cadastre seu Comercio</a>
@@ -80,9 +94,15 @@
 
                     <h2 class="my-4">Setor</h2>
                     <div class="list-group">
-                        <a href="#" class="list-group-item">Category 1</a>
-                        <a href="#" class="list-group-item">Category 2</a>
-                        <a href="#" class="list-group-item">Category 3</a>
+                        <%                        
+                        for (Tipo obj : arrtipos) {
+                    %>
+                    
+                        <a href="#" class="list-group-item" id="<%= obj.getId()%>"><%= obj.getTipo()%></a>
+                    
+                        <%
+                        }
+                    %>
                     </div>
 
                 </div>

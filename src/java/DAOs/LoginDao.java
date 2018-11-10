@@ -141,7 +141,7 @@ public class LoginDao implements ILoginDao {
 
         } catch (Exception ex) {
 
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
 
         } finally {
@@ -149,7 +149,7 @@ public class LoginDao implements ILoginDao {
             try {
                 conexao.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

@@ -113,6 +113,10 @@
                             <label for="cep">CEP</label>
                             <input type="text" class="form-control" id="cep" name="txtcep" required>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label for="comple">Complemento</label>
+                            <input type="text" class="form-control" id="comple" name="txtcomplemento" >
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label for="cidade">Cidade</label>

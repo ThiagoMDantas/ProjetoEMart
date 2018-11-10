@@ -12,7 +12,7 @@ package beans;
 public class Cooperador {
     
     private String nomeEmpresa;
-    private String cnpj;
+    private int cnpj;
     private String emailEmpresa;
     private int telefoneEmpresa;
     private Endereco enderecoEmpresa;
@@ -35,11 +35,11 @@ public class Cooperador {
         this.nomeEmpresa = nomeEmpresa;
     }
 
-    public String getCnpj() {
+    public int getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(int cnpj) {
         this.cnpj = cnpj;
     }
 
@@ -75,7 +75,7 @@ public class Cooperador {
         this.login = login;
     }
 
-    public Cooperador(String nomeEmpresa, String cnpj, String emailEmpresa, int telefoneEmpresa, Endereco enderecoEmpresa, Login login, int id) {
+    public Cooperador(String nomeEmpresa, int cnpj, String emailEmpresa, int telefoneEmpresa, Endereco enderecoEmpresa, Login login, int id) {
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
         this.emailEmpresa = emailEmpresa;
