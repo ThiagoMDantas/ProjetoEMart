@@ -44,13 +44,13 @@
             <div class="collapse navbar-collapse" id="textoNavbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="ControleHome">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre o EMart<span class="sr-only">(Página atual)</span>s</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cadastre seu Comercio</a>
+                        <a class="nav-link" href="CooperadorControle?flag=cadastroPage">Cadastre seu Comercio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contatos</a>
