@@ -17,7 +17,17 @@ public class Produto {
     private Tipo tipo;
     private Promocao promo;
     private Cooperador fornecedor;
+    private String imagem; 
     private int id;
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+    
     
     public int getId() {
         return id;
@@ -75,15 +85,18 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, int id) {
+    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, String imagem, int id) {
         this.nome = nome;
         this.valor = valor;
         this.detalhes = detalhes;
         this.tipo = tipo;
         this.promo = promo;
         this.fornecedor = fornecedor;
+        this.imagem = imagem;
         this.id = id;
     }
+
+    
 
     public Produto() {
     }

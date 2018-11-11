@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="data">Data de Nascimento</label>
-                            <input id="data" type="text" class="form-control" placeholder="04/04/1999" name="txtdatanasc" required>
+                            <input id="data" type="date" class="form-control" placeholder="04/04/1999" name="txtdatanasc" required>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="telefone">Telefone</label>

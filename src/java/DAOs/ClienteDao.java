@@ -9,6 +9,7 @@ import Interfaces.IClienteDao;
 import beans.Cliente;
 import beans.Endereco;
 import beans.Login;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,6 +36,8 @@ public class ClienteDao implements IClienteDao{
     public void cadatrarCliente(Cliente cliente) {
     
         try {
+            
+            java.sql.Date data = java.sql.Date.valueOf(cliente.getDtNascimento());
 
             conexao = ConectaBanco.getConexao();
 
@@ -44,7 +47,7 @@ public class ClienteDao implements IClienteDao{
             pstmt.setInt(2, cliente.getCpf());
             pstmt.setString(3, cliente.getSexo());
             pstmt.setInt(4, cliente.getTelefone());
-            pstmt.setString(5, cliente.getDtNascimento());
+            pstmt.setDate(5, data);
             pstmt.setString(6, cliente.getEmail());
             pstmt.setInt(7, cliente.getEndereco().getId());
             pstmt.setInt(8, cliente.getLogin().getId());

@@ -77,7 +77,7 @@
                 <h3 class="mb-5">
                     <em><font style="vertical-align: inherit;" color="ffffff"><font style="vertical-align: inherit;">Praticidade que nós gostariamos de ter nos nossos dias!</font></font></em>
                 </h3>
-                <form name="inicial" action="LoginControle" method="POST" id="formInicial">
+                <form name="inicial" action="LoginControle?flag=Formlogin" method="POST" id="formInicial">
                 <a class="btn btn-primary btn-xl js-scroll-trigger" onClick="document.getElementById('formInicial').submit();"><font style="vertical-align: inherit;" ><font style="vertical-align: inherit;">Entrar</font></font></a>
                 <input type="hidden" name="flag" value="Formlogin" onClick="document.getElementById('formInicial').submit();">
                 </form>
