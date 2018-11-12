@@ -6,6 +6,7 @@
 package Interfaces;
 
 import beans.Produto;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,8 @@ public interface IProdutoDao {
     public void cadastarProduto(Produto produto);
     
     public Produto consultarProduto(Produto produto);
+    
+    public ArrayList consultarTodosProduto(Produto produto);
     
     public boolean alterarProaduto(Produto produto);
     

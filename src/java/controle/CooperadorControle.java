@@ -40,6 +40,7 @@ public class CooperadorControle extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String flag = request.getParameter("flag");
         try (PrintWriter out = response.getWriter()) {
+            
            if(flag == null){
                
                request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -85,7 +86,7 @@ public class CooperadorControle extends HttpServlet {
                        CooperadorDao coopdao = new CooperadorDao();
                        coopdao.cadastrarCooperador(coop);
                        
-                       request.getRequestDispatcher("/jsp/PageCooperador.jsp").forward(request, response);
+                       request.getRequestDispatcher("/jsp/MinhaConta.jsp").forward(request, response);
                        
                        break;
                

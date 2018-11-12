@@ -6,6 +6,7 @@
 package Interfaces;
 
 import beans.ItemCarrinho;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,8 @@ public interface IItemCarrinhoDao {
     
     public void removerItem(ItemCarrinho itemcarrinho);
     
+    public ArrayList<ItemCarrinho> listarItem(ItemCarrinho itemcarrinho);
     
+    public void lterarItem(ItemCarrinho itemcarrinho);
     
 }

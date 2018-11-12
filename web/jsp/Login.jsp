@@ -128,9 +128,9 @@
 
             </div>
             <span class="navbar-text">
-                 <form class="form-inline" action="LoginControle?flag=Formcadastrar">
-                        <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cadastrar</button></a>
-                    </form>
+                        <a class="nav-link" href="LoginControle?flag=Formcadastrar"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cadastrar</button></a>
+                    
+                        
                 </span>
         </nav>
 

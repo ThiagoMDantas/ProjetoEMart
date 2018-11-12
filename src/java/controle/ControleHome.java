@@ -5,7 +5,9 @@
  */
 package controle;
 
+import DAOs.ProdutoDao;
 import DAOs.TipoDao;
+import beans.Produto;
 import beans.Tipo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,9 +42,13 @@ public class ControleHome extends HttpServlet {
                 Tipo tipo = new Tipo();
                 TipoDao tp = new TipoDao();
                 
+                Produto produto = new Produto();
+                ProdutoDao pd = new ProdutoDao();
+                
                 try{
                 
                 request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
+                request.setAttribute("produtos", pd.consultarTodosProduto(produto));
 
                 RequestDispatcher rd = request.getRequestDispatcher("/jsp/Home.jsp");
                 rd.forward(request, response);
