@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="textoNavbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(Página atual)</span></a>
+                        <a class="nav-link" href="ControleHome?flag=inicio">Home<span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre o EMart</a>
@@ -61,8 +61,8 @@
                 </ul>
                 <span class="navbar-text">
                     <form class="form-inline">
-                        <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cadastrar</button></a>
-                        <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>
+                        <a class="nav-link" href="LoginControle?flag=Formcadastrar"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Cadastrar</button></a>
+                        <a class="nav-link" href="LoginControle?flag=Formlogin"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button></a>
                     </form>
                 </span>
             </div>

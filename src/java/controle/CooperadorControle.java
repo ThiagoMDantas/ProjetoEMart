@@ -8,11 +8,14 @@ package controle;
 import DAOs.CooperadorDao;
 import DAOs.EnderecoDao;
 import DAOs.LoginDao;
+import DAOs.ProdutoDao;
 import beans.Cooperador;
 import beans.Endereco;
 import beans.Login;
+import beans.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,7 +56,7 @@ public class CooperadorControle extends HttpServlet {
                     break;
                     
                    case "cadastrarCooperador":
-                       
+                                    
                        Cooperador coop = new Cooperador();
                        coop.setNomeEmpresa(request.getParameter("txtempresa"));
                        coop.setCnpj(Integer.parseInt(request.getParameter("txtcnpj")));
@@ -89,7 +92,17 @@ public class CooperadorControle extends HttpServlet {
                        request.getRequestDispatcher("/jsp/MinhaConta.jsp").forward(request, response);
                        
                        break;
-               
+                       
+                   case "MinhaConta":
+                       
+                       Produto produto = new Produto();
+                       ProdutoDao prod = new ProdutoDao();
+                       request.setAttribute("ProdutosCooperador", prod.consultarProdutoPorFornecedor(produto));
+                       
+                       RequestDispatcher rd = request.getRequestDispatcher("/jsp/MinhaConta.jsp");
+                       rd.forward(request, response);
+                       
+                       break;
                
                }
                

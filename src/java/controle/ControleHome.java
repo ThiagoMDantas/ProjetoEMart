@@ -37,29 +37,65 @@ public class ControleHome extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        String flag = request.getParameter("flag");
+
         try (PrintWriter out = response.getWriter()) {
-           
-                Tipo tipo = new Tipo();
-                TipoDao tp = new TipoDao();
-                
-                Produto produto = new Produto();
-                ProdutoDao pd = new ProdutoDao();
-                
-                try{
-                
-                request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
-                request.setAttribute("produtos", pd.consultarTodosProduto(produto));
+            if (flag == null) {
 
-                RequestDispatcher rd = request.getRequestDispatcher("/jsp/Home.jsp");
-                rd.forward(request, response);
-                }catch (Exception ex) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
 
-                RequestDispatcher rd = request.getRequestDispatcher("erro.jsp");
-                rd.forward(request, response);
+            } else {
+
+                switch (flag) {
+
+                    case "inicio":
+
+                        try {
+                            Tipo tipo = new Tipo();
+                            TipoDao tp = new TipoDao();
+
+                            Produto produto = new Produto();
+                            ProdutoDao pd = new ProdutoDao();
+
+                            request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
+                            request.setAttribute("produtos", pd.consultarTodosProduto(produto));
+
+                            RequestDispatcher rd = request.getRequestDispatcher("/jsp/Home.jsp");
+                            rd.forward(request, response);
+
+                        } catch (Exception ex) {
+
+                            RequestDispatcher rd = request.getRequestDispatcher("erro.jsp");
+                            rd.forward(request, response);
+
+                        }
+
+                        break;
+
+                    case "pesquisa":
+
+                        try {
+                            Tipo tipo = new Tipo();
+                            TipoDao tp = new TipoDao();
+
+                            Produto produto = new Produto();
+                            ProdutoDao pd = new ProdutoDao();
+                            produto.setNome(request.getParameter("txtpesquisa"));
+                            request.setAttribute("produtos", pd.buscarPeloNome(produto));
+
+                            request.getRequestDispatcher("/jsp/Home.jsp").forward(request, response);
+                        } catch (Exception ex) {
+
+                            RequestDispatcher rd = request.getRequestDispatcher("ControleHome?flag=inicio");
+                            rd.forward(request, response);
+                        }
+                        break;
+
+                }
 
             }
-            
-            
+
         }
     }
 

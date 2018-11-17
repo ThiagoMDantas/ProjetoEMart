@@ -13,7 +13,18 @@ public class Login {
     
     private String usuario;
     private String senha;
+    private String lugar;
     private int id;
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+    
+    
     
     public int getId() {
         return id;
@@ -39,11 +50,14 @@ public class Login {
         this.senha = senha;
     }
 
-    public Login(String usuario, String senha, int id) {
+    public Login(String usuario, String senha, String lugar, int id) {
         this.usuario = usuario;
         this.senha = senha;
+        this.lugar = lugar;
         this.id = id;
     }
+
+    
 
     public Login() {
     }

@@ -44,7 +44,6 @@
             arrtipos = (ArrayList<Tipo>) request.getAttribute("tipos");
 
 
-
         %>
 
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-dark bg-dark">
@@ -59,13 +58,13 @@
             <div class="collapse navbar-collapse" id="textoNavbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="ControleHome?flag=inicio">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre o EMart<span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="CooperadorControle?flag=cadastroPage">Cadastre seu Comercio</a>
+                        <a class="nav-link" href="LoginControle?flag=Formlogin">Cadastre seu Comercio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contatos</a>
@@ -73,10 +72,17 @@
                 </ul>
 
 
-                <form class="form-inline" action="PesquisaControle" method="POST">
-                    <input class="form-control" type="search" placeholder="Produtos, marcas ou setores" maxlength="50" name="txtpesquisa">
-                    <a class="nav-link" href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button></a>
+
+                <form class="form-inline">
+                    <input class="form-control" type="search" placeholder="Pesquisa"  name="txtpesquisa" >
+                    <a class="nav-link" href="ControleHome?flag=pesquisa"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Pesquisar</button></a>
                 </form>
+                <span>
+                    <a class="navbar-brand" href="CarrinhoControle?flag=ViewCarrinho">
+                        <img src="img/carrinho.png" width="50" height="50" class="d-inline-block align-top">
+                    </a>
+
+                </span>
 
             </div>
 
@@ -95,8 +101,7 @@
 
                         <h2 class="my-4">Setores</h2>
                         <div class="list-group">
-                            <%                            
-                                for (Tipo obj : arrtipos) {
+                            <%                                for (Tipo obj : arrtipos) {
                             %>
 
                             <a href="#" class="list-group-item" id="<%= obj.getId()%>"><%= obj.getTipo()%></a>
@@ -140,10 +145,10 @@
 
                         <div class="row">
 
-                        
-                            
 
-                             <div class="col-lg-4 col-md-6 mb-4">
+
+
+                            <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="card h-100">
                                     <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                                     <div class="card-body">
@@ -155,12 +160,13 @@
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">
-                                            <button class="btn btn-outline-success my-sm-0" type="submit">Comprar</button></small>
+                                            <a href="CarrinhoControle?id= (adicinar)"><button class="btn btn-outline-success my-sm-0" type="button">Comprar</button></a>
+                                            </small>
                                     </div>
                                 </div>
                             </div>
 
-                           
+
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="card h-100">

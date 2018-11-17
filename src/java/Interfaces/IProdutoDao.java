@@ -20,9 +20,13 @@ public interface IProdutoDao {
     
     public ArrayList consultarTodosProduto(Produto produto);
     
-    public boolean alterarProaduto(Produto produto);
+    public ArrayList consultarProdutoPorFornecedor(Produto produto);
     
-    public boolean excluirProaduto(Produto produto);
+    public ArrayList buscarPeloNome(Produto produto);
+    
+    public boolean alterarProduto(Produto produto);
+    
+    public boolean excluirProduto(Produto produto);
     
     
     
