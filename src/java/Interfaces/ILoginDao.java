@@ -15,7 +15,7 @@ public interface ILoginDao {
     
     public void cadatrarLogin(Login login);
     
-    public boolean realizarLogin(Login login);
+    public Login realizarLogin(Login login);
     
     public Login consultarLogin(Login login);
     

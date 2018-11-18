@@ -25,7 +25,7 @@ public class CooperadorDao implements ICooperadorDao{
     
     private static final String INSERT = "INSERT INTO fornecedor (nome_for, endereco_for, CNPJ_for, telefone_for, email_for, login_for) VALUES ( ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM fornecedor where id_for=?";
-    private static final String BUSCAR = "SELECT * FROM fornecedor WHERE id_for=?;";
+    private static final String BUSCAR = "SELECT * FROM fornecedor WHERE login_for=?;";
     private static final String UPDATE = "UPDATE fornecedor SET nome_for=?, CNPJ_for=?, telefone_for=?, email_for=? WHERE id_for=?;";
 
     private Connection conexao;
@@ -76,7 +76,7 @@ public class CooperadorDao implements ICooperadorDao{
             
             PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
             
-            pstmt.setInt(1, cooperador.getId());
+            pstmt.setInt(1, cooperador.getLogin().getId());
             
             ResultSet rs = pstmt.executeQuery();
 

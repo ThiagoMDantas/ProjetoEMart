@@ -89,7 +89,7 @@ public class CooperadorControle extends HttpServlet {
                        CooperadorDao coopdao = new CooperadorDao();
                        coopdao.cadastrarCooperador(coop);
                        
-                       request.getRequestDispatcher("/jsp/MinhaConta.jsp").forward(request, response);
+                       request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
                        
                        break;
                        

@@ -5,7 +5,11 @@
  */
 package controle;
 
+import DAOs.ClienteDao;
+import DAOs.CooperadorDao;
 import DAOs.LoginDao;
+import beans.Cliente;
+import beans.Cooperador;
 import beans.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,6 +46,14 @@ public class LoginControle extends HttpServlet {
                request.getRequestDispatcher("index.jsp").forward(request, response);
                
            }else{
+                Login login = new Login();
+                LoginDao logindao = new LoginDao();
+                
+                Cooperador coop = new Cooperador();
+                CooperadorDao coopd = new CooperadorDao();
+                
+                Cliente cli = new Cliente();
+                ClienteDao cd = new ClienteDao();
            
                switch(flag){
                
@@ -49,22 +61,35 @@ public class LoginControle extends HttpServlet {
                        request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
                     break;
                     
+                    case "FormloginCoop":
+                       request.getRequestDispatcher("/jsp/LoginCooperador.jsp").forward(request, response);
+                    break;
+                    
                     case "realizarLogin":
                         
-                       Login login = new Login();
-                       //nome dos campos da jsp
-                       login.setUsuario(request.getParameter("txtusuario"));
-                       login.setSenha(request.getParameter("txtsenha"));
                        
-                        LoginDao logindao = new LoginDao();
+                            //nome dos campos da jsp
+                            login.setUsuario(request.getParameter("txtusuario"));
+                            login.setSenha(request.getParameter("txtsenha"));
+                       
+                            cli.setLogin(logindao.realizarLogin(login));
+                            request.setAttribute("dados",cd.consultarCliente(cli));
+                            
+                            request.getRequestDispatcher("ControleHome?flag=inicio").forward(request, response);
                         
+                    break;
+                    
+                    case "realizarLoginCoop":
                         
-                        if(!logindao.realizarLogin(login)){
-                            request.getRequestDispatcher("/jsp/Login.jsp").forward(request, response);
-                            out.print("<div class=\"alert alert-danger\" role=\"alert\">...</div>");
-                        }else{
-                            request.getRequestDispatcher("ControleHome").forward(request, response);
-                        }
+                        //nome dos campos da jsp
+                        login.setUsuario(request.getParameter("txtusuario"));
+                        login.setSenha(request.getParameter("txtsenha"));
+                        
+                        coop.setLogin(logindao.consultarLogin(login));
+                        request.setAttribute("dados", coopd.consultarCooperador(coop));
+                        
+                        request.getRequestDispatcher("CooperadorControle?flag=MinhaConta").forward(request, response);
+                        
                     break;
                        
                    case "Formcadastrar":

@@ -75,7 +75,7 @@ public class ProdutoDao implements IProdutoDao {
 
             conexao = ConectaBanco.getConexao();
 
-            PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
+            PreparedStatement pstmt = conexao.prepareStatement(BUSCAR);
 
             pstmt.setInt(1, produto.getId());
 
@@ -294,7 +294,7 @@ public class ProdutoDao implements IProdutoDao {
 
             conexao = ConectaBanco.getConexao();
 
-            PreparedStatement pstmt = conexao.prepareCall(BUSCARNOME);
+            PreparedStatement pstmt = conexao.prepareStatement(BUSCARNOME);
 
             pstmt.setString(1, "%" + produto.getNome() + "%");
 

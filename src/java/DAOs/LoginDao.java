@@ -57,7 +57,7 @@ public class LoginDao implements ILoginDao {
     }
 
     @Override
-    public boolean realizarLogin(Login login) {
+    public Login realizarLogin(Login login) {
         try {
 
             conexao = ConectaBanco.getConexao();
@@ -75,12 +75,11 @@ public class LoginDao implements ILoginDao {
             login.setUsuario(rs.getString("usuario_log"));
             login.setSenha(rs.getString("senha_log"));
 
-            return true;
 
         } catch (Exception ex) {
 
             Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            
         } finally {
 
             try {
@@ -89,6 +88,7 @@ public class LoginDao implements ILoginDao {
                 Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return login;
     }
 
     @Override

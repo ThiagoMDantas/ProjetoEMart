@@ -26,7 +26,7 @@ public class ClienteDao implements IClienteDao{
 
     private static final String INSERT = "INSERT INTO cliente (nome_cli, cpf_cli, sexo_cli, telefone_cli, dt_nasci_cli, email_cli, endereco_cli, login_cli) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM cliente where id_cli=?";
-    private static final String BUSCAR = "SELECT * FROM cliente WHERE id_cli=?;";
+    private static final String BUSCAR = "SELECT * FROM cliente WHERE login_cli=?;";
     private static final String UPDATE = "UPDATE cliente SET nome_cli=?, cpf_cli=?, sexo_cli=?, telefone_cli=?, dt_nasci_cli=?, email_cli=? WHERE id_cli=?;";
 
     
@@ -83,7 +83,7 @@ public class ClienteDao implements IClienteDao{
             
             PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
             
-            pstmt.setInt(1, cliente.getId());
+            pstmt.setInt(1, cliente.getLogin().getId());
             
             ResultSet rs = pstmt.executeQuery();
 
