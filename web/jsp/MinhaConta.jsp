@@ -78,7 +78,7 @@
                         <a class="nav-link" href="#">Sobre o EMart<span class="sr-only">(Página atual)</span>s</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="LoginControle?flag=Formlogin">Cadastre seu Comercio</a>
+                        <a class="nav-link" href="LoginControle?flag=FormloginCoop">Cadastre seu Comercio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contatos</a>
@@ -89,55 +89,65 @@
 
         </nav>
 
-        <header class="masthead d-flex">
+        <header class="masthead">
             <div class="panel">
                 <div class="col-md-12">
                     <div class="panel panel-primary filterable">
                         <div class="panel-heading">
-                             <h3 class="panel-title">Meus</h3>
+                            <h3 class="panel-title">Meus</h3>
                             <h3 class="panel-title">Produtos</h3>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col"><input type="checkbox" value=""></th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">R$</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><input type="checkbox" value=""><th>
-                            1
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><input type="checkbox" value=""><th>
-                            2
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><input type="checkbox" value=""><th>
-                            3
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+            <form action="ProdutoControle" method="POST" id="formTable">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Detalhes</th>
+                            <th scope="col">Setor</th>
+                            <th scope="col">Imagem</th>
+                            <th scope="col">R$</th>
+                            <th scope="col"></th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><input type="checkbox" value="" name="checkId" ><th>
+                                1
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td scope="col">
+                                <label>
+                                    <a href="ProdutoControle?flag=exluir"  onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Excluir</button></a>
+                                    <a href="ProdutoControle?flag=alterar" onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Alterar</button></a>
+                                </label>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <center>
+                    <span>
+                        <a href="ProdutoControle?flag=cadastrar"><button type="button" class="btn btn-primary">Cadastrar Produto</button></a>
+
+                    </span>
+                </center>
+
+            </form>
 
 
         </header>
+
 
 
 
