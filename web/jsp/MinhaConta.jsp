@@ -4,6 +4,8 @@
     Author     : Thiago
 --%>
 
+<%@page import="beans.Cooperador"%>
+<%@page import="beans.ProdutoPadrao"%>
 <%@page import="beans.Produto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -95,6 +97,10 @@
             ArrayList<Produto> arrmeusprod = new ArrayList<Produto>();
             arrmeusprod = (ArrayList<Produto>) request.getAttribute("produtosFornecedor");
             
+
+            Cooperador fonecedor = new Cooperador();
+            fonecedor = (Cooperador) request.getAttribute("dados");
+            
         %>
         
 
@@ -109,7 +115,10 @@
                     </div>
                 </div>
             </div>
+            
+            
             <form action="ProdutoControle" method="POST" id="formTable">
+                <input type="hidden" name="txtfonecedor" value="<%=fonecedor.getId()%>">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>

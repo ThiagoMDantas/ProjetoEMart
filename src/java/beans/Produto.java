@@ -20,6 +20,17 @@ public class Produto {
     private String imagem; 
     private int id;
     private int quantidade;
+    private ProdutoPadrao produtoPadrao;
+
+    public ProdutoPadrao getProdutoPadrao() {
+        return produtoPadrao;
+    }
+
+    public void setProdutoPadrao(ProdutoPadrao produtoPadrao) {
+        this.produtoPadrao = produtoPadrao;
+    }
+    
+    
 
     public int getQuantidade() {
         return quantidade;
@@ -96,7 +107,7 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, String imagem, int id, int quantidade) {
+    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, String imagem, int id, int quantidade, ProdutoPadrao produtoPadrao) {
         this.nome = nome;
         this.valor = valor;
         this.detalhes = detalhes;
@@ -106,7 +117,10 @@ public class Produto {
         this.imagem = imagem;
         this.id = id;
         this.quantidade = quantidade;
+        this.produtoPadrao = produtoPadrao;
     }
+
+    
 
     
 

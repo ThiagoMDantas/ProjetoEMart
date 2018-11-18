@@ -8,6 +8,7 @@ package DAOs;
 import Interfaces.IProdutoDao;
 import beans.Cooperador;
 import beans.Produto;
+import beans.ProdutoPadrao;
 import beans.Tipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,11 +27,11 @@ public class ProdutoDao implements IProdutoDao {
 
     private static final String SELECT_ALL = "SELECT * FROM produto;";
     private static final String SELECT_FOR = "SELECT * FROM produto WHERE fornecedor_prod=?;";
-    private static final String INSERT = "INSERT INTO produto (nome_prod, tipo_prod, vl_uni_prod, detalhes_prod, fornecedor_prod, imagem_prod, quantidade_prod) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    private static final String INSERT = "INSERT INTO produto (nome_prod, tipo_prod, vl_uni_prod, detalhes_prod, fornecedor_prod, imagem_prod, padrao_prod, quantidade_prod) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM produto where id_prod=?";
     private static final String BUSCAR = "SELECT * FROM produto WHERE id_prod=?;";
     private static final String BUSCARNOME = "SELECT * FROM produto WHERE nome_prod like ?;";
-    private static final String UPDATE = "UPDATE produto SET nome_prod=?, vl_uni_prod=?, detalhes_prod=? imagem_prod=? quantidade_prod=? WHERE id_prod=?;";
+    private static final String UPDATE = "UPDATE produto SET nome_prod=?, vl_uni_prod=?, detalhes_prod=? imagem_prod=?, padrao_prod=?, quantidade_prod=? WHERE id_prod=?;";
 
     private Connection conexao;
 
@@ -49,7 +50,8 @@ public class ProdutoDao implements IProdutoDao {
             pstmt.setString(4, produto.getDetalhes());
             pstmt.setInt(5, produto.getFornecedor().getId());
             pstmt.setString(6, produto.getImagem());
-            pstmt.setInt(7, produto.getQuantidade());
+            pstmt.setInt(7, produto.getProdutoPadrao().getId());
+            pstmt.setInt(8, produto.getQuantidade());
 
             pstmt.execute();
 
@@ -91,6 +93,11 @@ public class ProdutoDao implements IProdutoDao {
             produto.setDetalhes(rs.getString("detalhes_prod"));
             produto.setImagem(rs.getString("imagem_prod"));
 
+
+            ProdutoPadrao produtoPadrao = new ProdutoPadrao();
+            produtoPadrao.setId(rs.getInt("padrao_prod"));
+            produto.setProdutoPadrao(produtoPadrao);
+
             Cooperador fornecedor = new Cooperador();
             fornecedor.setId(rs.getInt("fornecedor_prod"));
             produto.setFornecedor(fornecedor);
@@ -130,6 +137,7 @@ public class ProdutoDao implements IProdutoDao {
             pstmt.setString(3, produto.getDetalhes());
             pstmt.setInt(4, produto.getId());
             pstmt.setString(5, produto.getImagem());
+            pstmt.setInt(6, produto.getProdutoPadrao().getId());
 
             pstmt.execute();
             return true;
@@ -205,6 +213,10 @@ public class ProdutoDao implements IProdutoDao {
                 prod.setDetalhes(rs.getString("detalhes_prod"));
                 prod.setImagem(rs.getString("imagem_prod"));
 
+                ProdutoPadrao produtoPadrao = new ProdutoPadrao();
+                produtoPadrao.setId(rs.getInt("padrao_prod"));
+                prod.setProdutoPadrao(produtoPadrao);
+
                 Tipo tp = new Tipo();
                 tp.setId(rs.getInt("tipo_prod"));
                 prod.setTipo(tp);
@@ -235,7 +247,7 @@ public class ProdutoDao implements IProdutoDao {
 
     @Override
     public ArrayList consultarProdutoPorFornecedor(Produto produto) {
-        
+
         ArrayList<Produto> listarprodutos = new ArrayList<Produto>();
 
         try {
@@ -244,10 +256,9 @@ public class ProdutoDao implements IProdutoDao {
             conexao = ConectaBanco.getConexao();
             //cria comando SQL
             PreparedStatement pstmt = conexao.prepareStatement(SELECT_FOR);
-            
+
             pstmt.setInt(1, produto.getFornecedor().getId());
-            
-            
+
             //executa
             ResultSet rs = pstmt.executeQuery();
 
@@ -260,6 +271,11 @@ public class ProdutoDao implements IProdutoDao {
                 prod.setDetalhes(rs.getString("detalhes_prod"));
                 prod.setImagem(rs.getString("imagem_prod"));
                 prod.setQuantidade(rs.getInt("quantidade_prod"));
+                prod.setImagem(rs.getString("imagem_prod"));
+
+                ProdutoPadrao produtoPadrao = new ProdutoPadrao();
+                produtoPadrao.setId(rs.getInt("padrao_prod"));
+                prod.setProdutoPadrao(produtoPadrao);
 
                 Tipo tp = new Tipo();
                 TipoDao td = new TipoDao();
@@ -291,7 +307,7 @@ public class ProdutoDao implements IProdutoDao {
 
     @Override
     public ArrayList buscarPeloNome(Produto produto) {
-        
+
         ArrayList<Produto> listarprodutos = new ArrayList<Produto>();
         try {
 
@@ -311,6 +327,10 @@ public class ProdutoDao implements IProdutoDao {
                 prod.setValor(Double.parseDouble(rs.getString("vl_uni_prod")));
                 prod.setDetalhes(rs.getString("detalhes_prod"));
                 prod.setImagem(rs.getString("imagem_prod"));
+
+                ProdutoPadrao produtoPadrao = new ProdutoPadrao();
+                produtoPadrao.setId(rs.getInt("padrao_prod"));
+                prod.setProdutoPadrao(produtoPadrao);
 
                 Tipo tp = new Tipo();
                 tp.setId(rs.getInt("tipo_prod"));

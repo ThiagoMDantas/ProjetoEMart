@@ -6,9 +6,11 @@
 package controle;
 
 import DAOs.ProdutoDao;
+import DAOs.ProdutoPadraoDao;
 import DAOs.TipoDao;
 import beans.Cooperador;
 import beans.Produto;
+import beans.ProdutoPadrao;
 import beans.Tipo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,6 +52,10 @@ public class ProdutoControle extends HttpServlet {
                 Produto prod = new Produto();
                 ProdutoDao pd = new ProdutoDao();
 
+                ProdutoPadrao prodpadr = new ProdutoPadrao();
+                ProdutoPadraoDao pdpadr = new ProdutoPadraoDao();
+
+                
                 Cooperador coop = new Cooperador();
 
                 Tipo tipo = new Tipo();
@@ -70,9 +76,31 @@ public class ProdutoControle extends HttpServlet {
                     case "cadastrar":
 
                         request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
+                        request.setAttribute("Produtospadr", pdpadr.consultarTodosProdutoPadrao(prodpadr));
 
                         request.getRequestDispatcher("/jsp/CadastrarProduto.jsp").forward(request, response);
                         break;
+                        
+                        case "CadastrarProduto":
+                            
+                            prod.setNome(request.getParameter("txtnome"));
+                            tipo.setId(Integer.parseInt(request.getParameter("opSetor")));
+                            prod.setTipo(tipo);
+                            prod.setValor(Double.parseDouble(request.getParameter("txtvalor")));
+                            prod.setDetalhes(request.getParameter("txtdetalhes"));
+                            coop.setId(Integer.parseInt(request.getParameter("txtfonecedor")));
+                            prod.setFornecedor(coop);
+                            prod.setImagem(request.getParameter("txtimagem"));
+                            prod.setQuantidade(Integer.parseInt(request.getParameter("txtquantidade")));
+                            prodpadr.setId(Integer.parseInt(request.getParameter("opPadrao")));
+                            prod.setProdutoPadrao(prodpadr);
+                            
+                            pd.cadastarProduto(prod);
+                            
+                            request.getRequestDispatcher("CooperadorControle?flag=MinhaConta").forward(request, response);
+                            
+                            
+                            break;
 
                 }
             }
