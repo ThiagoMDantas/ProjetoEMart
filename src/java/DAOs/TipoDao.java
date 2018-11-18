@@ -25,7 +25,7 @@ public class TipoDao implements ITipoDao{
     private static final String SELECT_ALL = "SELECT * FROM tipo;";
     private static final String INSERT = "INSERT INTO tipo (id_tp, setor_tp) VALUES ( ?, ?);";
     private static final String DELETE = "DELETE FROM tipo where id_tp=?";
-    private static final String BUSCAR = "SELECT * FROM tipo WHERE setor_tp=?;";
+    private static final String BUSCAR = "SELECT * FROM tipo WHERE id_tp=?;";
     private static final String UPDATE = "UPDATE tipo SET setor_tp=? WHERE id_tp=?;";
 
     
@@ -70,9 +70,9 @@ public class TipoDao implements ITipoDao{
             
             conexao = ConectaBanco.getConexao();
             
-            PreparedStatement pstmt = conexao.prepareCall(BUSCAR);
+            PreparedStatement pstmt = conexao.prepareStatement(BUSCAR);
             
-            pstmt.setString(1, tipo.getTipo());
+            pstmt.setInt(1, tipo.getId());
             
             ResultSet rs = pstmt.executeQuery();
 

@@ -26,11 +26,11 @@ public class ProdutoDao implements IProdutoDao {
 
     private static final String SELECT_ALL = "SELECT * FROM produto;";
     private static final String SELECT_FOR = "SELECT * FROM produto WHERE fornecedor_prod=?;";
-    private static final String INSERT = "INSERT INTO produto (nome_prod, tipo_prod, vl_uni_prod, detalhes_prod, fornecedor_prod, imagem_prod) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String INSERT = "INSERT INTO produto (nome_prod, tipo_prod, vl_uni_prod, detalhes_prod, fornecedor_prod, imagem_prod, quantidade_prod) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM produto where id_prod=?";
     private static final String BUSCAR = "SELECT * FROM produto WHERE id_prod=?;";
     private static final String BUSCARNOME = "SELECT * FROM produto WHERE nome_prod like ?;";
-    private static final String UPDATE = "UPDATE produto SET nome_prod=?, vl_uni_prod=?, detalhes_prod=? imagem_prod=? WHERE id_prod=?;";
+    private static final String UPDATE = "UPDATE produto SET nome_prod=?, vl_uni_prod=?, detalhes_prod=? imagem_prod=? quantidade_prod=? WHERE id_prod=?;";
 
     private Connection conexao;
 
@@ -49,6 +49,7 @@ public class ProdutoDao implements IProdutoDao {
             pstmt.setString(4, produto.getDetalhes());
             pstmt.setInt(5, produto.getFornecedor().getId());
             pstmt.setString(6, produto.getImagem());
+            pstmt.setInt(7, produto.getQuantidade());
 
             pstmt.execute();
 
@@ -258,10 +259,12 @@ public class ProdutoDao implements IProdutoDao {
                 prod.setValor(Double.parseDouble(rs.getString("vl_uni_prod")));
                 prod.setDetalhes(rs.getString("detalhes_prod"));
                 prod.setImagem(rs.getString("imagem_prod"));
+                prod.setQuantidade(rs.getInt("quantidade_prod"));
 
                 Tipo tp = new Tipo();
+                TipoDao td = new TipoDao();
                 tp.setId(rs.getInt("tipo_prod"));
-                prod.setTipo(tp);
+                prod.setTipo(td.consultarTipo(tp));
 
                 Cooperador cop = new Cooperador();
                 cop.setId(rs.getInt("fornecedor_prod"));

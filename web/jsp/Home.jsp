@@ -101,7 +101,8 @@
 
                         <h2 class="my-4">Setores</h2>
                         <div class="list-group">
-                            <%                                for (Tipo obj : arrtipos) {
+                            <%                                
+                                for (Tipo obj : arrtipos) {
                             %>
 
                             <a href="#" class="list-group-item" id="<%= obj.getId()%>"><%= obj.getTipo()%></a>

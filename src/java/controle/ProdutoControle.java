@@ -6,10 +6,13 @@
 package controle;
 
 import DAOs.ProdutoDao;
+import DAOs.TipoDao;
 import beans.Cooperador;
 import beans.Produto;
+import beans.Tipo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,22 +46,21 @@ public class ProdutoControle extends HttpServlet {
                 request.getRequestDispatcher("/jsp/MinhaConta.jsp").forward(request, response);
 
             } else {
-                
-                        Produto prod = new Produto();
-                        ProdutoDao pd = new ProdutoDao();
-                        
-                        Cooperador coop = new Cooperador();
+
+                Produto prod = new Produto();
+                ProdutoDao pd = new ProdutoDao();
+
+                Cooperador coop = new Cooperador();
+
+                Tipo tipo = new Tipo();
+                TipoDao tp = new TipoDao();
 
                 switch (flag) {
-                    case "consultar":
-                        //login retorna fornecedor
-                        pd.consultarProdutoPorFornecedor(prod);
-                        
-                        break;
+                    
                     case "exluir":
                         prod.setId(Integer.parseInt(request.getParameter("checkId")));
                         pd.excluirProduto(prod);
-                        
+
                         break;
                     case "alterar":
                         prod.setId(Integer.parseInt(request.getParameter("checkId")));
@@ -66,14 +68,15 @@ public class ProdutoControle extends HttpServlet {
                         request.getRequestDispatcher("/jsp/AlterarProduto.jsp").forward(request, response);
                         break;
                     case "cadastrar":
-                         request.getRequestDispatcher("/jsp/CadastrarProduto.jsp").forward(request, response);
+
+                        request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
+
+                        request.getRequestDispatcher("/jsp/CadastrarProduto.jsp").forward(request, response);
                         break;
-                    
-                    
+
                 }
-            }  
-            
-            
+            }
+
         }
     }
 

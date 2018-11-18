@@ -8,9 +8,11 @@ package controle;
 import DAOs.ClienteDao;
 import DAOs.CooperadorDao;
 import DAOs.LoginDao;
+import DAOs.ProdutoDao;
 import beans.Cliente;
 import beans.Cooperador;
 import beans.Login;
+import beans.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -54,6 +56,10 @@ public class LoginControle extends HttpServlet {
                 
                 Cliente cli = new Cliente();
                 ClienteDao cd = new ClienteDao();
+                
+                
+                Produto prod = new Produto();
+                ProdutoDao pd = new ProdutoDao();
            
                switch(flag){
                
@@ -87,6 +93,11 @@ public class LoginControle extends HttpServlet {
                         
                         coop.setLogin(logindao.consultarLogin(login));
                         request.setAttribute("dados", coopd.consultarCooperador(coop));
+                        
+                        
+                        prod.setFornecedor(coopd.consultarCooperador(coop));
+                        
+                        request.setAttribute("produtosFornecedor", pd.consultarProdutoPorFornecedor(prod));
                         
                         request.getRequestDispatcher("CooperadorControle?flag=MinhaConta").forward(request, response);
                         

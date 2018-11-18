@@ -4,10 +4,11 @@
     Author     : Thiago
 --%>
 
+<%@page import="beans.Produto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
     <head>
         <link rel="shortcut icon" href="img/favicon.ico">
         <link rel="icon" type="image/gif" href="img/animated_favicon1.gif">
@@ -88,6 +89,14 @@
             </div>
 
         </nav>
+        
+        <%
+            
+            ArrayList<Produto> arrmeusprod = new ArrayList<Produto>();
+            arrmeusprod = (ArrayList<Produto>) request.getAttribute("produtosFornecedor");
+            
+        %>
+        
 
         <header class="masthead">
             <div class="panel">
@@ -118,14 +127,23 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row"><input type="checkbox" value="" name="checkId" ><th>
-                                1
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            
+                            <%                                
+                                for (Produto obj : arrmeusprod) {
+                            %>
+                            
+                            <th scope="row"><input type="checkbox" value="<%=obj.getId()%>" name="checkId" ><th>
+                           <%=obj.getId()%>
+                            <td><%=obj.getNome()%></td>
+                            <td><%=obj.getQuantidade()%></td>
+                            <td><%=obj.getDetalhes()%></td>
+                            <td><%=obj.getTipo().getTipo()%></td>
+                            <td><%=obj.getImagem()%></td>
+                            <td><%=obj.getValor()%></td>
+                            
+                            <%
+                                }
+                            %>
                             <td scope="col">
                                 <label>
                                     <a href="ProdutoControle?flag=exluir"  onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Excluir</button></a>
