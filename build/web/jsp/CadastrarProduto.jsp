@@ -4,6 +4,7 @@
     Author     : Thiago
 --%>
 
+<%@page import="beans.Cooperador"%>
 <%@page import="beans.ProdutoPadrao"%>
 <%@page import="beans.Tipo"%>
 <%@page import="java.util.ArrayList"%>
@@ -69,14 +70,21 @@
                 ArrayList<ProdutoPadrao> arrpadrao = new ArrayList<ProdutoPadrao>();
                 arrpadrao = (ArrayList<ProdutoPadrao>) request.getAttribute("Produtospadr");
                 
+                Cooperador forne = new Cooperador();
+                forne = (Cooperador) request.getAttribute("fornecedor");    
+                
                 
             %>
 
 
 
         <header class="masthead">
-            <form class="form-horizontal" method="POST" action="ProdutoControle?flag=CadastrarProduto">
+            <form class="form-horizontal" method="POST" action="ProdutoControle">
                     <!-- Form Name -->
+                    
+                    <input type="hidden" name="txtfor" value="<%=forne.getId()%>">
+                    <input type="hidden" name="flag" value="CadastrarProduto">
+                    
                     <legend>
                         <strong>
                             Cadastro de Produtos

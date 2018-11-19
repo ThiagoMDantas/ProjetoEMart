@@ -99,9 +99,8 @@ public class CooperadorControle extends HttpServlet {
                        ProdutoDao prod = new ProdutoDao();
                        request.setAttribute("ProdutosCooperador", prod.consultarProdutoPorFornecedor(produto));
                        
-                       RequestDispatcher rd = request.getRequestDispatcher("/jsp/MinhaConta.jsp");
-                       rd.forward(request, response);
-                       
+                       request.getRequestDispatcher("/jsp/MinhaConta.jsp").forward(request, response);
+                      
                        break;
                
                }

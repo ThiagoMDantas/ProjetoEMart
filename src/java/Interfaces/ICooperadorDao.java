@@ -17,6 +17,8 @@ public interface ICooperadorDao {
     
     public Cooperador consultarCooperador(Cooperador cooperador);
     
+    public Cooperador consultarCooperadorID(Cooperador cooperador);
+    
     public boolean alterarCooperador(Cooperador cooperador);
     
     public boolean excluirCooperador(Cooperador cooperador);

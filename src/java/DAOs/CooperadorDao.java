@@ -26,6 +26,7 @@ public class CooperadorDao implements ICooperadorDao{
     private static final String INSERT = "INSERT INTO fornecedor (nome_for, endereco_for, CNPJ_for, telefone_for, email_for, login_for) VALUES ( ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM fornecedor where id_for=?";
     private static final String BUSCAR = "SELECT * FROM fornecedor WHERE login_for=?;";
+    private static final String BUSCARID = "SELECT * FROM fornecedor WHERE id_for=?;";
     private static final String UPDATE = "UPDATE fornecedor SET nome_for=?, CNPJ_for=?, telefone_for=?, email_for=? WHERE id_for=?;";
 
     private Connection conexao;
@@ -185,6 +186,58 @@ public class CooperadorDao implements ICooperadorDao{
             }
         }
 
+    }
+
+    @Override
+    public Cooperador consultarCooperadorID(Cooperador cooperador) {
+        try{
+            
+            conexao = ConectaBanco.getConexao();
+            
+            PreparedStatement pstmt = conexao.prepareCall(BUSCARID);
+            
+            pstmt.setInt(1, cooperador.getId());
+            
+            ResultSet rs = pstmt.executeQuery();
+
+            // como a query ira retornar somente um registro, faremos o NEXT
+            rs.next();
+            
+            Login login = new Login();
+            login.setId(rs.getInt("login_for"));
+            
+            Endereco end = new Endereco();
+            end.setId(rs.getInt("endereco_for"));
+            
+            
+            cooperador.setId(rs.getInt("id_for"));
+            cooperador.setNomeEmpresa(rs.getString("nome_for"));
+            cooperador.setCnpj(rs.getInt("cnpj_for"));
+            cooperador.setTelefoneEmpresa(rs.getInt("telefone_for"));
+            cooperador.setEmailEmpresa(rs.getString("email_for"));
+            cooperador.setLogin(login);
+            cooperador.setEnderecoEmpresa(end);
+            
+            
+            
+            return cooperador;
+            
+        }catch(Exception ex){
+        
+            Logger.getLogger(CooperadorDao.class.getName()).log(Level.SEVERE, null, ex);
+            return cooperador;
+        
+        
+        }finally{
+        
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CooperadorDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        
+        }
     }
     
     

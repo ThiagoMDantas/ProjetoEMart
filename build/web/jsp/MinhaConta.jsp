@@ -91,18 +91,17 @@
             </div>
 
         </nav>
-        
+
         <%
-            
+
             ArrayList<Produto> arrmeusprod = new ArrayList<Produto>();
             arrmeusprod = (ArrayList<Produto>) request.getAttribute("produtosFornecedor");
-            
 
             Cooperador fonecedor = new Cooperador();
             fonecedor = (Cooperador) request.getAttribute("dados");
-            
+
         %>
-        
+
 
         <header class="masthead">
             <div class="panel">
@@ -115,10 +114,10 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <form action="ProdutoControle" method="POST" id="formTable">
-                <input type="hidden" name="txtfonecedor" value="<%=fonecedor.getId()%>">
+                
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -135,41 +134,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            
-                            <%                                
+                         <%
                                 for (Produto obj : arrmeusprod) {
                             %>
-                            
+                        <tr>
+
+                           
+
                             <th scope="row"><input type="checkbox" value="<%=obj.getId()%>" name="checkId" ><th>
-                           <%=obj.getId()%>
+                                <%=obj.getId()%>
                             <td><%=obj.getNome()%></td>
                             <td><%=obj.getQuantidade()%></td>
                             <td><%=obj.getDetalhes()%></td>
                             <td><%=obj.getTipo().getTipo()%></td>
                             <td><%=obj.getImagem()%></td>
                             <td><%=obj.getValor()%></td>
+
                             
-                            <%
-                                }
-                            %>
                             <td scope="col">
                                 <label>
                                     <a href="ProdutoControle?flag=exluir"  onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Excluir</button></a>
+                                </label> <label>
                                     <a href="ProdutoControle?flag=alterar" onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Alterar</button></a>
                                 </label>
                             </td>
 
                         </tr>
+                        <%
+                                }
+                            %>
                     </tbody>
                 </table>
+
+
+            </form>
+            <form action="ProdutoControle" method="POST">
                 <center>
                     <span>
-                        <a href="ProdutoControle?flag=cadastrar"><button type="button" class="btn btn-primary">Cadastrar Produto</button></a>
 
+                        <a><button type="submit" class="btn btn-primary">Cadastrar Produto</button></a>
+                        <input type="hidden" value="cadastrar" name="flag"> 
+                        <input type="hidden" name="txtfornecedor" value="<%=fonecedor.getId()%>">
                     </span>
                 </center>
-
             </form>
 
 

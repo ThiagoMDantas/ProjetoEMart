@@ -5,6 +5,7 @@
  */
 package controle;
 
+import DAOs.CooperadorDao;
 import DAOs.ProdutoDao;
 import DAOs.ProdutoPadraoDao;
 import DAOs.TipoDao;
@@ -57,6 +58,7 @@ public class ProdutoControle extends HttpServlet {
 
                 
                 Cooperador coop = new Cooperador();
+                CooperadorDao coopd = new CooperadorDao();
 
                 Tipo tipo = new Tipo();
                 TipoDao tp = new TipoDao();
@@ -74,6 +76,9 @@ public class ProdutoControle extends HttpServlet {
                         request.getRequestDispatcher("/jsp/AlterarProduto.jsp").forward(request, response);
                         break;
                     case "cadastrar":
+                        
+                        coop.setId(Integer.parseInt(request.getParameter("txtfornecedor")));
+                        request.setAttribute("fornecedor", coopd.consultarCooperadorID(coop));
 
                         request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
                         request.setAttribute("Produtospadr", pdpadr.consultarTodosProdutoPadrao(prodpadr));
@@ -88,7 +93,7 @@ public class ProdutoControle extends HttpServlet {
                             prod.setTipo(tipo);
                             prod.setValor(Double.parseDouble(request.getParameter("txtvalor")));
                             prod.setDetalhes(request.getParameter("txtdetalhes"));
-                            coop.setId(Integer.parseInt(request.getParameter("txtfonecedor")));
+                            coop.setId(Integer.parseInt(request.getParameter("txtfor")));
                             prod.setFornecedor(coop);
                             prod.setImagem(request.getParameter("txtimagem"));
                             prod.setQuantidade(Integer.parseInt(request.getParameter("txtquantidade")));
