@@ -62,117 +62,112 @@
             </div>
 
         </nav>
-        
-         <%
-                ArrayList<Tipo> arrtipos = new ArrayList<Tipo>();
-                arrtipos = (ArrayList<Tipo>) request.getAttribute("tipos");
-                
-                ArrayList<ProdutoPadrao> arrpadrao = new ArrayList<ProdutoPadrao>();
-                arrpadrao = (ArrayList<ProdutoPadrao>) request.getAttribute("Produtospadr");
-                
-                Cooperador forne = new Cooperador();
-                forne = (Cooperador) request.getAttribute("fornecedor");    
-                
-                
-            %>
+
+        <%
+            ArrayList<Tipo> arrtipos = new ArrayList<Tipo>();
+            arrtipos = (ArrayList<Tipo>) request.getAttribute("tipos");
+
+            ArrayList<ProdutoPadrao> arrpadrao = new ArrayList<ProdutoPadrao>();
+            arrpadrao = (ArrayList<ProdutoPadrao>) request.getAttribute("Produtospadr");
+
+
+        %>
 
 
 
         <header class="masthead">
             <form class="form-horizontal" method="POST" action="ProdutoControle">
-                    <!-- Form Name -->
-                    
-                    <input type="hidden" name="txtfor" value="<%=forne.getId()%>">
-                    <input type="hidden" name="flag" value="CadastrarProduto">
-                    
-                    <legend>
-                        <strong>
-                            Cadastro de Produtos
-                        </strong>
-                    </legend>
+                <!-- Form Name -->
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtproduto">Nome do Produto: </label>  
-                        <div class="col-md-6">
-                            <input id="txtproduto" name="txtnome" type="text" placeholder="Macarrão Adria" class="form-control input-md" required>
+                <input type="hidden" name="flag" value="CadastrarProduto">
 
-                        </div>
+                <legend>
+                    <strong>
+                        Cadastro de Produtos
+                    </strong>
+                </legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtproduto">Nome do Produto: </label>  
+                    <div class="col-md-6">
+                        <input id="txtproduto" name="txtnome" type="text" placeholder="Macarrão Adria" class="form-control input-md" required>
+
                     </div>
+                </div>
 
-                    <!-- Select Basic -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtgrupo">Setor: </label>
-                        <div class="col-md-4">
-                            <select id="txtgrupo" name="opSetor" class="form-control">
-                                <%                                for (Tipo obj : arrtipos) {
-                                %>
-                                <option value="<%= obj.getId()%>"><%=obj.getTipo()%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                        </div>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtgrupo">Setor: </label>
+                    <div class="col-md-4">
+                        <select id="txtgrupo" name="opSetor" class="form-control">
+                            <%                                for (Tipo obj : arrtipos) {
+                            %>
+                            <option value="<%= obj.getId()%>"><%=obj.getTipo()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
                     </div>
+                </div>
 
-                            
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtgrupo">Nome Padrão: </label>
-                        <div class="col-md-4">
-                            <select id="txtgrupo" name="opPadrao" class="form-control">
-                                <%                                
-                                    for (ProdutoPadrao obj2 : arrpadrao) {
-                                %>
-                                <option value="<%= obj2.getId()%>"><%=obj2.getNomePadrao()%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                        </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtgrupo">Nome Padrão: </label>
+                    <div class="col-md-4">
+                        <select id="txtgrupo" name="opPadrao" class="form-control">
+                            <%
+                                for (ProdutoPadrao obj2 : arrpadrao) {
+                            %>
+                            <option value="<%= obj2.getId()%>"><%=obj2.getNomePadrao()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtestoque_minimo">Valor Unitário: </label>  
-                        <div class="col-md-2">
-                            <input id="txtestoque_minimo" name="txtvalor" type="text" placeholder="" class="form-control input-md" required>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtestoque_minimo">Valor Unitário: </label>  
+                    <div class="col-md-2">
+                        <input id="txtestoque_minimo" name="txtvalor" type="text" placeholder="" class="form-control input-md" required>
 
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtestoque_atual">Estoque Atual: </label>  
-                        <div class="col-md-2">
-                            <input id="txtestoque_atual" name="txtquantidade" type="text" placeholder="" class="form-control input-md" required>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtestoque_atual">Estoque Atual: </label>  
+                    <div class="col-md-2">
+                        <input id="txtestoque_atual" name="txtquantidade" type="text" placeholder="" class="form-control input-md" required>
 
-                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtimagem">Link da Imagem: </label>  
-                        <div class="col-md-6">
-                            <input id="txtimagem" name="txtimagem" type="text" placeholder="" class="form-control input-md"required>
+                </div>
 
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtimagem">Detalhes: </label>  
-                        <div class="col-md-6">
-                            <textarea  id="txtimagem" name="txtdetalhes" type="textbox" placeholder="" class="form-control input-md" required>Escreva aqui</textarea>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtimagem">Link da Imagem: </label>  
+                    <div class="col-md-6">
+                        <input id="txtimagem" name="txtimagem" type="text" placeholder="" class="form-control input-md"required>
 
-                        </div>
                     </div>
-                    
-                    <!-- Button (Double) -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="btnsalvar"></label>
-                        <div class="col-md-8">
-                            <button type="submit" name="btnsalvar" class="btn btn-primary">Salvar</button>
-                            <button id="btncancelar" name="btncancelar" class="btn btn-danger">Cancelar</button>
-                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtimagem">Detalhes: </label>  
+                    <div class="col-md-6">
+                        <textarea  id="txtimagem" name="txtdetalhes" type="textbox" placeholder="" class="form-control input-md" required>Escreva aqui</textarea>
+
                     </div>
+                </div>
+
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btnsalvar"></label>
+                    <div class="col-md-8">
+                        <button type="submit" name="btnsalvar" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
 
             </form>
 

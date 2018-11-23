@@ -95,7 +95,7 @@
         <%
 
             ArrayList<Produto> arrmeusprod = new ArrayList<Produto>();
-            arrmeusprod = (ArrayList<Produto>) request.getAttribute("produtosFornecedor");
+            arrmeusprod = (ArrayList<Produto>) request.getAttribute("ProdutosCooperador");
 
             Cooperador fonecedor = new Cooperador();
             fonecedor = (Cooperador) request.getAttribute("dados");
@@ -174,7 +174,6 @@
 
                         <a><button type="submit" class="btn btn-primary">Cadastrar Produto</button></a>
                         <input type="hidden" value="cadastrar" name="flag"> 
-                        <input type="hidden" name="txtfornecedor" value="<%=fonecedor.getId()%>">
                     </span>
                 </center>
             </form>

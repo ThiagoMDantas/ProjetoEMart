@@ -7,6 +7,7 @@ package DAOs;
 
 import Interfaces.IClienteDao;
 import beans.Cliente;
+import beans.Email;
 import beans.Endereco;
 import beans.Login;
 import java.sql.CallableStatement;
@@ -54,6 +55,10 @@ public class ClienteDao implements IClienteDao{
             
 
             pstmt.execute();
+            
+            Email objemail = new Email();
+            objemail.enviar(cliente.getNome(), cliente.getEmail());
+
 
 
         } catch (Exception ex) {

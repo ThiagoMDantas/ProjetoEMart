@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -60,6 +61,8 @@ public class LoginControle extends HttpServlet {
                 
                 Produto prod = new Produto();
                 ProdutoDao pd = new ProdutoDao();
+                
+                HttpSession session = request.getSession();
            
                switch(flag){
                
@@ -79,7 +82,7 @@ public class LoginControle extends HttpServlet {
                             login.setSenha(request.getParameter("txtsenha"));
                        
                             cli.setLogin(logindao.realizarLogin(login));
-                            request.setAttribute("dados",cd.consultarCliente(cli));
+                            session.setAttribute("dados", cd.consultarCliente(cli));
                             
                             request.getRequestDispatcher("ControleHome?flag=inicio").forward(request, response);
                         
@@ -92,7 +95,7 @@ public class LoginControle extends HttpServlet {
                         login.setSenha(request.getParameter("txtsenha"));
                         
                         coop.setLogin(logindao.consultarLogin(login));
-                        request.setAttribute("dados", coopd.consultarCooperador(coop));
+                        session.setAttribute("dados",coopd.consultarCooperador(coop));
                         
                         
                         prod.setFornecedor(coopd.consultarCooperador(coop));

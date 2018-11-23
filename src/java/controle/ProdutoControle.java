@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -62,6 +63,8 @@ public class ProdutoControle extends HttpServlet {
 
                 Tipo tipo = new Tipo();
                 TipoDao tp = new TipoDao();
+                
+                HttpSession session = request.getSession();
 
                 switch (flag) {
                     
@@ -77,8 +80,6 @@ public class ProdutoControle extends HttpServlet {
                         break;
                     case "cadastrar":
                         
-                        coop.setId(Integer.parseInt(request.getParameter("txtfornecedor")));
-                        request.setAttribute("fornecedor", coopd.consultarCooperadorID(coop));
 
                         request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
                         request.setAttribute("Produtospadr", pdpadr.consultarTodosProdutoPadrao(prodpadr));
@@ -93,8 +94,7 @@ public class ProdutoControle extends HttpServlet {
                             prod.setTipo(tipo);
                             prod.setValor(Double.parseDouble(request.getParameter("txtvalor")));
                             prod.setDetalhes(request.getParameter("txtdetalhes"));
-                            coop.setId(Integer.parseInt(request.getParameter("txtfor")));
-                            prod.setFornecedor(coop);
+                            prod.setFornecedor((Cooperador) session.getAttribute("dados"));
                             prod.setImagem(request.getParameter("txtimagem"));
                             prod.setQuantidade(Integer.parseInt(request.getParameter("txtquantidade")));
                             prodpadr.setId(Integer.parseInt(request.getParameter("opPadrao")));
@@ -110,7 +110,7 @@ public class ProdutoControle extends HttpServlet {
                 }
             }
 
-        }
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

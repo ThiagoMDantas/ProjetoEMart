@@ -4,9 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Home.jsp</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Login.jsp</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/index.jsp</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/MinhaConta.jsp</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/LoginControle.java</file>
         </group>
     </open-files>
 </project-private>

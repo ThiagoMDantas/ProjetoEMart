@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,6 +50,9 @@ public class CooperadorControle extends HttpServlet {
                request.getRequestDispatcher("index.jsp").forward(request, response);
                
            }else{
+               
+                HttpSession session = request.getSession();
+               
                switch(flag){
                
                    case "cadastroPage":
@@ -96,6 +100,7 @@ public class CooperadorControle extends HttpServlet {
                    case "MinhaConta":
                        
                        Produto produto = new Produto();
+                       produto.setFornecedor((Cooperador) session.getAttribute("dados"));
                        ProdutoDao prod = new ProdutoDao();
                        request.setAttribute("ProdutosCooperador", prod.consultarProdutoPorFornecedor(produto));
                        

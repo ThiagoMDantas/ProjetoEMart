@@ -7,6 +7,7 @@ package DAOs;
 
 import Interfaces.ICooperadorDao;
 import beans.Cooperador;
+import beans.Email;
 import beans.Endereco;
 import beans.Login;
 import java.sql.Connection;
@@ -49,6 +50,9 @@ public class CooperadorDao implements ICooperadorDao{
             
 
             pstmt.execute();
+            
+            Email objemail = new Email();
+            objemail.enviar(cooperador.getNomeEmpresa(), cooperador.getEmailEmpresa());
 
 
         } catch (Exception ex) {
