@@ -116,58 +116,65 @@
             </div>
 
 
-            <form action="ProdutoControle" method="POST" id="formTable">
-                
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Id</th>
-                            <th scope="col">Produto</th>
-                            <th scope="col">Quantidade</th>
-                            <th scope="col">Detalhes</th>
-                            <th scope="col">Setor</th>
-                            <th scope="col">Imagem</th>
-                            <th scope="col">R$</th>
-                            <th scope="col"></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                         <%
-                                for (Produto obj : arrmeusprod) {
-                            %>
-                        <tr>
-
-                           
-
-                            <th scope="row"><input type="checkbox" value="<%=obj.getId()%>" name="checkId" ><th>
-                                <%=obj.getId()%>
-                            <td><%=obj.getNome()%></td>
-                            <td><%=obj.getQuantidade()%></td>
-                            <td><%=obj.getDetalhes()%></td>
-                            <td><%=obj.getTipo().getTipo()%></td>
-                            <td><%=obj.getImagem()%></td>
-                            <td><%=obj.getValor()%></td>
-
-                            
-                            <td scope="col">
-                                <label>
-                                    <a href="ProdutoControle?flag=exluir"  onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Excluir</button></a>
-                                </label> <label>
-                                    <a href="ProdutoControle?flag=alterar" onClick="document.getElementById('formTable').submit();"><button type="button" class="btn btn-primary">Alterar</button></a>
-                                </label>
-                            </td>
-
-                        </tr>
-                        <%
-                                }
-                            %>
-                    </tbody>
-                </table>
 
 
-            </form>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Detalhes</th>
+                        <th scope="col">Setor</th>
+                        <th scope="col">Imagem</th>
+                        <th scope="col">R$</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <%                             
+                        for (Produto obj : arrmeusprod) {
+                    %>
+                    <tr>
+
+
+
+                        
+                        <td><%=obj.getId()%></td>
+                        <td><%=obj.getNome()%></td>
+                        <td><%=obj.getQuantidade()%></td>
+                        <td><%=obj.getDetalhes()%></td>
+                        <td><%=obj.getTipo().getTipo()%></td>
+                        <td><%=obj.getImagem()%></td>
+                        <td><%=obj.getValor()%></td>
+
+
+                        <td scope="col">
+                            <label>
+                                <form action="ProdutoControle" method="POST">
+                                    <input type="hidden" name="checkId" value="<%=obj.getId()%>">
+                                    <input type="hidden" name="flag" value="exluir">
+                                    <button type="submit" class="btn btn-primary">Excluir</button>
+                                </form>
+                            </label> 
+                            <label>
+                                <form action="ProdutoControle" method="POST">
+                                    <input type="hidden" name="checkId" value="<%=obj.getId()%>">
+                                    <input type="hidden" name="flag" value="alterar">
+                                    <button type="submit" class="btn btn-primary">Alterar</button>
+                                </form>
+                            </label>
+                        </td>
+
+                    </tr>
+                    <%
+                        }
+                    %>
+                </tbody>
+            </table>
+
+
             <form action="ProdutoControle" method="POST">
                 <center>
                     <span>

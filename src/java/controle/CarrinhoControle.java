@@ -5,6 +5,7 @@
  */
 package controle;
 
+import DAOs.ProdutoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,26 +43,30 @@ public class CarrinhoControle extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
 
             } else {
+                HttpSession session = request.getSession();
+                
+                ProdutoDao pd = new ProdutoDao();
 
                 switch (flag) {
 
                     case "ViewCarrinho":
-
+                        
+                        String prod = (String) session.getAttribute("carrinho");
+                        request.setAttribute("carrinhoview", pd.listaprodutoscarrinho(prod));
                         request.getRequestDispatcher("/jsp/Carrinho.jsp").forward(request, response);
 
                         break;
 
                     case "AdicionarProduto":
 
-                        HttpSession session = request.getSession();
 
                         String produtos = (String) session.getAttribute("carrinho");
 
-                        produtos += "," + request.getParameter("id");
+                        produtos += "," + request.getParameter("idpadr");
 
                         session.setAttribute("carrinho", produtos);
 
-                        response.sendRedirect("ControleHome");
+                        response.sendRedirect("ControleHome?flag=inicio");
 
                         break;
 

@@ -71,7 +71,7 @@ public class ProdutoControle extends HttpServlet {
                     case "exluir":
                         prod.setId(Integer.parseInt(request.getParameter("checkId")));
                         pd.excluirProduto(prod);
-
+                        request.getRequestDispatcher("CooperadorControle?flag=MinhaConta").forward(request, response);
                         break;
                     case "alterar":
                         prod.setId(Integer.parseInt(request.getParameter("checkId")));

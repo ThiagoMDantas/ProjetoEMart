@@ -30,6 +30,7 @@ public class ProdutoDao implements IProdutoDao {
     private static final String INSERT = "INSERT INTO produto (nome_prod, tipo_prod, vl_uni_prod, detalhes_prod, fornecedor_prod, imagem_prod, padrao_prod, quantidade_prod) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String DELETE = "DELETE FROM produto where id_prod=?";
     private static final String BUSCAR = "SELECT * FROM produto WHERE id_prod=?;";
+    private static final String BUSCARPADRAO = "SELECT * FROM produto WHERE padrao_prod=?;";
     private static final String BUSCARNOME = "SELECT * FROM produto WHERE nome_prod like ?;";
     private static final String UPDATE = "UPDATE produto SET nome_prod=?, vl_uni_prod=?, detalhes_prod=? imagem_prod=?, padrao_prod=?, quantidade_prod=? WHERE id_prod=?;";
 
@@ -360,4 +361,80 @@ public class ProdutoDao implements IProdutoDao {
         return listarprodutos;
     }
 
+    
+    public ArrayList<Produto> listaprodutoscarrinho(String produtos) {
+
+        String[] arrlista = produtos.split(",");
+        
+        ArrayList<Produto> arr = new ArrayList<>();
+        
+        for (int i=1;i<arrlista.length;i++) {
+            Produto prod = new Produto();
+            
+            ProdutoPadrao pp = new ProdutoPadrao();
+            pp.setId(Integer.parseInt(arrlista[i]));
+            prod.setProdutoPadrao(pp);
+            ProdutoDao produtodao = new ProdutoDao();
+            
+            produtodao.consultarProdutoPadrao(prod);
+            arr.add(prod);
+                        
+        }
+             
+       return arr;
+
+
+    }
+
+    private Produto consultarProdutoPadrao(Produto produto) {
+
+        try {
+
+            conexao = ConectaBanco.getConexao();
+
+            PreparedStatement pstmt = conexao.prepareStatement(BUSCARPADRAO);
+
+            pstmt.setInt(1, produto.getProdutoPadrao().getId());
+
+            ResultSet rs = pstmt.executeQuery();
+
+            // como a query ira retornar somente um registro, faremos o NEXT
+            rs.next();
+
+            produto.setId(rs.getInt("id_prod"));
+            produto.setNome(rs.getString("nome_prod"));
+            produto.setValor(rs.getDouble("vl_uni_prod"));
+            produto.setDetalhes(rs.getString("detalhes_prod"));
+            produto.setImagem(rs.getString("imagem_prod"));
+
+
+            ProdutoPadrao produtoPadrao = new ProdutoPadrao();
+            produtoPadrao.setId(rs.getInt("padrao_prod"));
+            produto.setProdutoPadrao(produtoPadrao);
+
+            Cooperador fornecedor = new Cooperador();
+            fornecedor.setId(rs.getInt("fornecedor_prod"));
+            produto.setFornecedor(fornecedor);
+
+            Tipo tipo = new Tipo();
+            tipo.setId(rs.getInt("tipo_prod"));
+            produto.setTipo(tipo);
+
+        } catch (Exception ex) {
+
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return produto;
+
+
+    }
 }

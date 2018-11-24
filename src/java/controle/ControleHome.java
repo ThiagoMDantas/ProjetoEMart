@@ -82,9 +82,11 @@ public class ControleHome extends HttpServlet {
                             Produto produto = new Produto();
                             ProdutoDao pd = new ProdutoDao();
                             produto.setNome(request.getParameter("txtpesquisa"));
+                            request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
                             request.setAttribute("produtos", pd.buscarPeloNome(produto));
 
-                            request.getRequestDispatcher("/jsp/Home.jsp").forward(request, response);
+                            RequestDispatcher rd = request.getRequestDispatcher("/jsp/Home.jsp");
+                            rd.forward(request, response);
                         } catch (Exception ex) {
 
                             RequestDispatcher rd = request.getRequestDispatcher("ControleHome?flag=inicio");

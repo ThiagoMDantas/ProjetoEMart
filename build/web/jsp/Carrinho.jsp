@@ -4,6 +4,8 @@
     Author     : Thiago
 --%>
 
+<%@page import="beans.Produto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -127,10 +129,61 @@
                 </ul>
 
             </div>
-            
+
         </nav>
-        
-        
+
+        <%
+            ArrayList<Produto> arrprodutos = new ArrayList<Produto>();
+            arrprodutos = (ArrayList<Produto>) request.getAttribute("carrinhoview");
+
+        %>
+
+        <div class="container">
+
+            
+
+            <h2>Carrinho de Produtos</h2>
+
+
+            <div class="carrinho">
+
+                <%                    
+                    for (Produto obj : arrprodutos) {
+
+                %>
+            
+                
+                <div class="produtocarrinho">
+
+
+                    <div class="nomeprodutocarrinho">
+                        <label><%= obj.getNome()%></label>                        
+                    </div>
+
+                    <div class="fotoprodutocarrinho">
+                        <img src="<%= obj.getImagem()%>" alt=""/>
+                    </div>
+
+                    <div class="precoprodutocarrinho">
+                        <label><%= obj.getValor()%></label>                      
+                    </div>
+
+
+                </div>
+
+                <%
+
+                    }
+
+                %>
+
+            </div>
+
+
+
+        </div>
+
+
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

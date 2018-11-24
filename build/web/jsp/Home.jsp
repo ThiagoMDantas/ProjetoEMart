@@ -73,9 +73,10 @@
 
 
 
-                <form class="form-inline">
+                <form class="form-inline" action="ControleHome" method="POST">
                     <input class="form-control" type="search" placeholder="Pesquisa"  name="txtpesquisa" >
-                    <a class="nav-link" href="ControleHome?flag=pesquisa"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Pesquisar</button></a>
+                    <input type="hidden" name="flag" value="pesquisa">
+                    <a class="nav-link"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button></a>
                 </form>
                 <span>
                     <a class="navbar-brand" href="CarrinhoControle?flag=ViewCarrinho">
@@ -101,8 +102,7 @@
 
                         <h2 class="my-4">Setores</h2>
                         <div class="list-group">
-                            <%                                
-                                for (Tipo obj : arrtipos) {
+                            <%                                for (Tipo obj : arrtipos) {
                             %>
 
                             <a href="#" class="list-group-item" id="<%= obj.getId()%>"><%= obj.getTipo()%></a>
@@ -148,7 +148,7 @@
 
 
 
-                            <%                                
+                            <%
                                 for (Produto prod : arrprod) {
                             %>
                             <div class="col-lg-4 col-md-6 mb-4">
@@ -163,8 +163,12 @@
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">
-                                            <a href="CarrinhoControle?id= (adicinar)"><button class="btn btn-outline-success my-sm-0" type="button">Comprar</button></a>
-                                            </small>
+                                            <form action="CarrinhoControle" method="POST">
+                                                <input type="hidden" name="idpadr" value="<%=prod.getProdutoPadrao().getId()%>">
+                                                <input type="hidden" name="flag" value="AdicionarProduto">
+                                                <button class="btn btn-outline-success my-sm-0" type="submit">Comprar</button>
+                                            </form>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
