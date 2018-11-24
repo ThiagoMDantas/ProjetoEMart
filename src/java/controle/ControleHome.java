@@ -94,6 +94,22 @@ public class ControleHome extends HttpServlet {
                         }
                         break;
 
+                    case "setor":
+                        Tipo tipo = new Tipo();
+                        TipoDao tp = new TipoDao();
+
+                        Produto produto = new Produto();
+                        ProdutoDao pd = new ProdutoDao();
+
+                        tipo.setId(Integer.parseInt(request.getParameter("txtcategoria")));
+                        produto.setTipo(tipo);
+                        request.setAttribute("tipos", tp.consultarTodosTipo(tipo));
+                        request.setAttribute("produtos", pd.buscarPeloTipo(produto));
+
+                        RequestDispatcher rd = request.getRequestDispatcher("/jsp/Home.jsp");
+                        rd.forward(request, response);
+                        break;
+
                 }
 
             }

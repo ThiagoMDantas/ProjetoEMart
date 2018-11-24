@@ -24,6 +24,8 @@ public interface IProdutoDao {
     
     public ArrayList buscarPeloNome(Produto produto);
     
+    public ArrayList buscarPeloTipo(Produto produto);
+    
     public boolean alterarProduto(Produto produto);
     
     public boolean excluirProduto(Produto produto);
