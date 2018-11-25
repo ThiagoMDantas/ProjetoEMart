@@ -368,15 +368,15 @@ public class ProdutoDao implements IProdutoDao {
         ArrayList<Produto> arr = new ArrayList<>();
 
         for (int i = 1; i < arrlista.length; i++) {
-            Produto prod = new Produto();
+            
 
-            ProdutoPadrao pp = new ProdutoPadrao();
+            Produto pp = new Produto();
             pp.setId(Integer.parseInt(arrlista[i]));
-            prod.setProdutoPadrao(pp);
+            
             ProdutoDao produtodao = new ProdutoDao();
 
-            produtodao.consultarProdutoPadrao(prod);
-            arr.add(prod);
+            
+            arr.add(produtodao.consultarProduto(pp));
 
         }
 
@@ -384,56 +384,7 @@ public class ProdutoDao implements IProdutoDao {
 
     }
 
-    private Produto consultarProdutoPadrao(Produto produto) {
-
-        try {
-
-            conexao = ConectaBanco.getConexao();
-
-            PreparedStatement pstmt = conexao.prepareStatement(BUSCARPADRAO);
-
-            pstmt.setInt(1, produto.getProdutoPadrao().getId());
-
-            ResultSet rs = pstmt.executeQuery();
-
-            // como a query ira retornar somente um registro, faremos o NEXT
-            rs.next();
-
-            produto.setId(rs.getInt("id_prod"));
-            produto.setNome(rs.getString("nome_prod"));
-            produto.setValor(rs.getDouble("vl_uni_prod"));
-            produto.setDetalhes(rs.getString("detalhes_prod"));
-            produto.setImagem(rs.getString("imagem_prod"));
-
-            ProdutoPadrao produtoPadrao = new ProdutoPadrao();
-            produtoPadrao.setId(rs.getInt("padrao_prod"));
-            produto.setProdutoPadrao(produtoPadrao);
-
-            Cooperador fornecedor = new Cooperador();
-            fornecedor.setId(rs.getInt("fornecedor_prod"));
-            produto.setFornecedor(fornecedor);
-
-            Tipo tipo = new Tipo();
-            tipo.setId(rs.getInt("tipo_prod"));
-            produto.setTipo(tipo);
-
-        } catch (Exception ex) {
-
-            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
-
-        } finally {
-
-            try {
-                conexao.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-        return produto;
-
-    }
-
+    
     @Override
     public ArrayList buscarPeloTipo(Produto produto) {
         

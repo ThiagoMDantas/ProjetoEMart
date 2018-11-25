@@ -29,76 +29,10 @@
         <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/meucss.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            .body {font-family: Arial, Helvetica, sans-serif;}
-            form {border: 3px solid #f1f1f1;
-                  background: #f1f1f1}
-
-            input[type=text], input[type=password] {
-                width: 100%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                display: inline-block;
-                border: 1px solid #ccc;
-                box-sizing: border-box;
-            }
-
-            .button1 {
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-            }
-
-            .button1:hover {
-                opacity: 0.8;
-            }
-
-            .cancelbtn {
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-                width: 100%;
-                background-color: #f44336;
-            }
-
-            .imgcontainer {
-                text-align: center;
-                margin: 24px 0 12px 0;
-            }
-
-            img.avatar {
-                width: 40%;
-                border-radius: 50%;
-            }
-
-            .container {
-                padding: 16px;
-            }
-
-            span.psw {
-                float: right;
-                padding-top: 16px;
-            }
-
-            /* Change styles for span and cancel button on extra small screens */
-            @media screen and (max-width: 300px) {
-                span.psw {
-                    display: block;
-                    float: none;
-                }
-                .cancelbtn {
-                    width: 100%;
-                }
-            }
-        </style>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
 
 
     </head>
@@ -132,56 +66,87 @@
 
         </nav>
 
+
         <%
             ArrayList<Produto> arrprodutos = new ArrayList<Produto>();
             arrprodutos = (ArrayList<Produto>) request.getAttribute("carrinhoview");
 
         %>
 
-        <div class="container">
+        <header class="masthead d-flex" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <h5><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho de Compra</h5>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <form action="ControleHome?flag=inicio" method="POST">
+                                                <button type="submit" class="btn btn-primary btn-sm btn-block">
+                                                <span class="glyphicon glyphicon-share-alt"></span> Continuar Comprando
+                                            </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            
+                            <div class="panel-body">
+                                <%
+                                    double soma=0;
+                                    for (Produto obj : arrprodutos) {
+                                        soma += obj.getValor();
+                                %>
 
-            <h2>Carrinho de Produtos</h2>
+                                <div class="row">
+                                    <div class="col-xs-2"><img class="img-responsive" src="<%=obj.getImagem()%>">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <h4 class="product-name"><strong><%=obj.getNome()%></strong></h4><h4><small><%=obj.getDetalhes()%></small></h4>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6 text-right">
+                                            <h6><strong><%=obj.getValor()%><span class="text-muted"> x</span></strong></h6>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control input-sm" value="1">
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <button type="button" class="btn btn-link btn-xs">
+                                                <span class="glyphicon glyphicon-trash"> </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <%
 
+                                    }
 
-            <div class="carrinho">
+                                %>
 
-                <%                    
-                    for (Produto obj : arrprodutos) {
-
-                %>
-            
-                
-                <div class="produtocarrinho">
-
-
-                    <div class="nomeprodutocarrinho">
-                        <label><%= obj.getNome()%></label>                        
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row text-center">
+                                    <div class="col-xs-9">
+                                        <h4 class="text-right">Total <strong>$<%=soma%></strong></h4>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-success btn-block">
+                                            Comprar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="fotoprodutocarrinho">
-                        <img src="<%= obj.getImagem()%>" alt=""/>
-                    </div>
-
-                    <div class="precoprodutocarrinho">
-                        <label><%= obj.getValor()%></label>                      
-                    </div>
-
-
                 </div>
-
-                <%
-
-                    }
-
-                %>
-
-            </div>
-
-
-
-        </div>
+            </div>     
+        </header>
 
 
         <!-- Bootstrap core JavaScript -->

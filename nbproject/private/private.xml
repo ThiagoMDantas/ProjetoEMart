@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/ProdutoControle.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/LoginDao.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/beans/Produto.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/CooperadorDao.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/LoginControle.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/CadastroControle.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Carrinho.jsp</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/ClienteDao.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Home.jsp</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/beans/Cliente.java</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/web/jsp/Login.jsp</file>
+            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/beans/Produto.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/ControleHome.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/DAOs/ProdutoDao.java</file>
-            <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/CooperadorControle.java</file>
             <file>file:/C:/Users/Thiago/Documents/NetBeansProjects/EMart-CRUD/src/java/controle/CarrinhoControle.java</file>
         </group>
     </open-files>

@@ -168,7 +168,7 @@
                                     <div class="card-footer">
                                         <small class="text-muted">
                                             <form action="CarrinhoControle" method="POST">
-                                                <input type="hidden" name="idpadr" value="<%=prod.getProdutoPadrao().getId()%>">
+                                                <input type="hidden" name="id" value="<%=prod.getId()%>">
                                                 <input type="hidden" name="flag" value="AdicionarProduto">
                                                 <button class="btn btn-outline-success my-sm-0" type="submit">Comprar</button>
                                             </form>

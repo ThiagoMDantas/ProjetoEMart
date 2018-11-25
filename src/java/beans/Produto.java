@@ -21,6 +21,17 @@ public class Produto {
     private int id;
     private int quantidade;
     private ProdutoPadrao produtoPadrao;
+    private double total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    
 
     public ProdutoPadrao getProdutoPadrao() {
         return produtoPadrao;
@@ -107,7 +118,7 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, String imagem, int id, int quantidade, ProdutoPadrao produtoPadrao) {
+    public Produto(String nome, double valor, String detalhes, Tipo tipo, Promocao promo, Cooperador fornecedor, String imagem, int id, int quantidade, ProdutoPadrao produtoPadrao, double total) {
         this.nome = nome;
         this.valor = valor;
         this.detalhes = detalhes;
@@ -118,7 +129,10 @@ public class Produto {
         this.id = id;
         this.quantidade = quantidade;
         this.produtoPadrao = produtoPadrao;
+        this.total = total;
     }
+
+    
 
     
 

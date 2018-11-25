@@ -62,7 +62,7 @@ public class CarrinhoControle extends HttpServlet {
 
                         String produtos = (String) session.getAttribute("carrinho");
 
-                        produtos += "," + request.getParameter("idpadr");
+                        produtos += "," + request.getParameter("id");
 
                         session.setAttribute("carrinho", produtos);
 
